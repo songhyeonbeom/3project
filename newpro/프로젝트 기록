@@ -1,0 +1,9 @@
+프로젝트 만들기
+django-admin startproject config .
+
+앱만들기
+django-admin startapp common
+
+프로젝트 config/urls.py
+추가작성
+path('common/', include('common.urls')),
