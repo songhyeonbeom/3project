@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+반갑다능 ★
+<input type="text" class="title" >
+<input type="text" class="content" >
+<input type="button" class="btnAjax" value="TEST">
+
+<script>
+    let btnAjax = document.querySelector('.btnAjax');
+
+    btnAjax.addEventListener('click', e => {
+        let title = document.querySelector('.title').value;
+        let content = document.querySelector('.content').value;
+        let param = {
+          'title': title,
+          'content' : content,
+        }
+        $.ajax({
+            url : '{% url 'ajaxtest:test' %}',
+            type : 'POST',
+            dataType : 'json',
+            contentType: 'application/json; charset=urf-8',
+            data : JSON.stringify(param),
+            headers: {
+                'X-CSRFTOKEN' : '{{ csrf_token }}'
+            },
+            success : function(data){
+                    console.log(data);
+            },
+            error: function(){
+                    alert('안돼 돌아가, 안 바꿔줘');
+            }
+        });
+    });
+</script>
+
+{% endblock %}
