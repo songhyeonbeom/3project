@@ -16,9 +16,8 @@ urlpatterns = [
     path('photo/', include('photo.urls')),
     path('sessiontest/', include('sessiontest.urls')),
     path('ajaxtest/', include('ajaxtest.urls')),
-
-
 ]
+
 
 if settings.DEBUG:
     import debug_toolbar
