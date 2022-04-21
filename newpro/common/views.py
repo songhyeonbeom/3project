@@ -27,3 +27,9 @@ def signup(request):
 
 
     return render(request, 'common/signup.html', {'form': form})
+
+
+
+
+def index(request):
+    return render(request, 'common/login.html')
