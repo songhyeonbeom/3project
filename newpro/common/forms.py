@@ -30,11 +30,33 @@ class UserForm(UserCreationForm):
 
 class ProfileForm(forms.ModelForm):
     birth_date = forms.DateField(label="생일")
-    gender = forms.IntegerField(label="성별")
+    nickname = forms.CharField(label="닉네임", max_length=8)
 
     class Meta:
         model = Profile
-        fields = ("birth_date", "gender", )
+        fields = ("birth_date", "nickname")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# class ProfileForm(forms.ModelForm):
+#     birth_date = forms.DateField(label="생일")
+#     age = forms.IntegerField(label="성별")
+#
+#     class Meta:
+#         model = Profile
+#         fields = ("birth_date", "age", )
+#
 
 
 

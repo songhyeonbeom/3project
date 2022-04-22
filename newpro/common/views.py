@@ -1,34 +1,36 @@
+# from django.contrib.auth import authenticate, login
+# from django.contrib.auth.models import User
+# from django.shortcuts import render, redirect
+# from common.forms import UserForm, ProfileForm
+# from common.models import Profile
 
-from django.contrib.auth import authenticate, login
+
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from common.forms import UserForm, ProfileForm
-
-
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
 
 
 
 def signup(request):
     """
-    계정생성
+    회원가입
     """
     if request.method == "POST":
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST)
-        if user_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
+
             user_form.save()
+            profile_form.save()
 
-            profile = profile_form.save(commit=False)
-            profile.user = user_form
-            profile.save()
 
-            # first_name = user_form.cleaned_data.get('first_name')
-            # last_name = user_form.cleaned_data.get('last_name')
 
             username = user_form.cleaned_data.get('username')
             raw_password = user_form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)  # 사용자 인증
-            login(request, user)  # 로그인
-
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
             return redirect('index')
     else:
         user_form = UserForm()
@@ -40,3 +42,6 @@ def signup(request):
 
 def index(request):
     return render(request, 'common/login.html')
+
+
+
