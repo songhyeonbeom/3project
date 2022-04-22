@@ -1,7 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container my-3">
     <form method="post" action="{% url 'common:login' %}">
+
+
+
+
+
         {% csrf_token %}
         {% include "form_errors.html" %}
         <div class="mb-3">
@@ -14,6 +36,11 @@
             <input type="password" class="form-control" name="password" id="password"
                    value="{{ form.password.value|default_if_none:'' }}">
         </div>
+
+
+
+
+
         <button type="submit" class="btn btn-primary">로그인</button>
     </form>
 </div>
@@ -21,4 +48,9 @@
 
 
 <a class="nav-link" href="{% url 'common:signup' %}">회원가입</a>
+
+
+
+
+
 {% endblock %}

@@ -17,7 +17,6 @@
                    value="{{ form.username.value|default_if_none:'' }}">
         </div>
 
-
         <div class="form-group">
             <label for="username">로그인 ID</label>
             <input type="text" class="form-control" name="username" id="username"
@@ -41,6 +40,44 @@
             <input type="text" class="form-control" name="email" id="email"
                    value="{{ form.email.value|default_if_none:'' }}">
         </div>
+
+
+
+        <div class="form-group">
+            <label for="birth_date">생년월일</label>
+            <input type="date" class="form-control" name="birth_date" id="birth_date"
+                   value="{{ form.birth_date.value|default_if_none:'' }}"
+                   style="width:200px; margin:auto;">
+        </div>
+
+
+
+
+
+
+
+        <div class="form-group">
+            <label>성별</label><br>
+
+            <label for="man">남자</label>
+            <input type="radio" name="gender" id="man"
+                   value="{{ form.gender.value|default_if_none:'0' }}">
+            <label for="woman">여자</label>
+            <input type="radio" name="gender" id="woman"
+                   value="{{ form.gender.value|default_if_none:'1' }}">
+            <label for="goman">고자</label>
+            <input type="radio" name="gender" id="goman"
+                   value="{{ form.gender.value|default_if_none:'2' }}">
+        </div>
+
+
+
+
+
+
+
+
+
 
         <button type="submit" class="btn btn-primary">생성하기</button>
     </form>
