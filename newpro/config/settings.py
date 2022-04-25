@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'common.apps.CommonConfig',
+    'teachcom.apps.TeachcomConfig',
+
 
     'django.contrib.admin',
     'django.contrib.auth',
