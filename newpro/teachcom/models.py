@@ -1,6 +1,3 @@
-from django.db import models
-
-# Create your models here.
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.db import models
@@ -13,8 +10,8 @@ from django.dispatch import receiver
 
 class Profile2(models.Model):
     user = models.OneToOneField(auth.models.User, on_delete=models.CASCADE, related_name='profile2')
-    birth_date = models.DateField()
-    nickname = models.CharField(max_length=8)
+    birth_date = models.DateField(null=True)
+    nickname = models.CharField(max_length=8, null=True)
 
 
 @receiver(post_save, sender=auth.models.User)
@@ -25,6 +22,6 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=auth.models.User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+    instance.profile2.save()
 
 

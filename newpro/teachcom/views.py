@@ -1,11 +1,10 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from teachcom.forms import UserForm, ProfileForm
 from teachcom.models import Profile2
+
+
+
 
 
 def signup(request):
@@ -18,12 +17,11 @@ def signup(request):
             user.save()
             print("5555 ", user.id)
 #            profile = Profile(user_id=user.id, rank=request.POST.get('rank'), sq=request.POST.get('sq'),name = request.POST.get('name') )
-            profile = Profile2.objects.filter(user_id=int(user.id)).update(rank=request.POST.get('rank'), sq=request.POST.get('sq'),name = request.POST.get('name') )
-            print("dddddddddda ", profile.user)
-            print("ddddddddddb ", profile.rank)
-            print("ddddddddddc ", profile.sq)
-            print("ddddddddddd ", profile.name)
-            profile.save()
+            profile2 = Profile2.objects.filter(user_id=int(user.id)).update(birth_date=request.POST.get('birth_date'), nickname=request.POST.get('nickname'))
+            # print("dddddddddda ", profile2.user)
+            # print("ddddddddddb ", profile2.birth_date)
+            # print("ddddddddddc ", profile2.nickname)
+            # profile2.save()
             registered = True
             #
             # print(profile)
@@ -44,5 +42,15 @@ def signup(request):
     else:
         user_form = UserForm()
         profile_form = ProfileForm()
-    return render(request, 'custom_auth/signup.html',
+    return render(request, 'teachcom/signup.html',
                   {'user_form': user_form, 'profile_form': profile_form})
+
+
+
+
+
+
+def index(request):
+    return render(request, 'teachcom/login.html')
+
+

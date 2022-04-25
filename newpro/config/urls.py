@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from common import views
+from teachcom import views
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('common/', include('common.urls')),
+    path('teachcom/', include('teachcom.urls')),
     path('', views.index, name='index'),
 ]
