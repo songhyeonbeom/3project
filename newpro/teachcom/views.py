@@ -1,9 +1,10 @@
+
+
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from teachcom.forms import UserForm, ProfileForm
 from teachcom.models import Profile2
-
-
 
 
 
@@ -17,7 +18,9 @@ def signup(request):
             user.save()
             print("5555 ", user.id)
 #            profile = Profile(user_id=user.id, rank=request.POST.get('rank'), sq=request.POST.get('sq'),name = request.POST.get('name') )
-            profile2 = Profile2.objects.filter(user_id=int(user.id)).update(birth_date=request.POST.get('birth_date'), nickname=request.POST.get('nickname'))
+            profile2 = Profile2.objects.filter(user_id=int(user.id)).\
+                update(birth_date=request.POST.get('birth_date'),
+                       nickname=request.POST.get('nickname'))
             # print("dddddddddda ", profile2.user)
             # print("ddddddddddb ", profile2.birth_date)
             # print("ddddddddddc ", profile2.nickname)

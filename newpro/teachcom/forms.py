@@ -13,10 +13,6 @@ from teachcom.models import Profile2
 
 
 
-
-
-
-
 class UserForm(UserCreationForm):
     email = forms.EmailField(label="이메일")
 

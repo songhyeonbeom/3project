@@ -1,3 +1,48 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from common.forms import UserForm, ProfileForm
+from common.models import Profile
+
 
 # Create your views here.
+
+
+def signup(request):
+    if request.method == "POST":
+        user_form = UserForm(data=request.POST)
+        profile_form = ProfileForm(data=request.POST)
+
+        print(request.POST.get('birth_date'))
+        print(user_form.is_valid(),  profile_form.is_valid())
+
+        if user_form.is_valid() and profile_form.is_valid():
+            print(request.POST.get('realname'))
+
+            user = user_form.save(commit=False)
+            user.save()
+
+            profile = Profile.objects.filter(user_id=int(user.id)). \
+                update(birth_date=request.POST.get('birth_date'),
+                       realname=request.POST.get('realname'),
+                       address=request.POST.get('address'),
+                       phone=request.POST.get('phone'),
+                       gender=request.POST.get('gender'))
+
+            username = user_form.cleaned_data.get('username')
+            raw_password = user_form.cleaned_data.get('password1')
+
+            user = authenticate(username=username, password=raw_password)
+
+            login(request, user)
+            return redirect('index')
+
+    else:
+        user_form = UserForm()
+        profile_form = ProfileForm()
+
+    return render(request, 'common/signup.html',
+                  {'user_form': user_form, 'profile_form': profile_form})
+
+
+def index(request):
+    return render(request, 'common/login.html')
