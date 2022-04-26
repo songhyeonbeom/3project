@@ -21,12 +21,13 @@ def signup(request):
             user = user_form.save(commit=False)
             user.save()
 
-            profile = Profile.objects.filter(user_id=int(user.id)). \
+            profile = Profile.objects.filter(user_id=int(user.id)).\
                 update(birth_date=request.POST.get('birth_date'),
-                       realname=request.POST.get('realname'),
                        address=request.POST.get('address'),
                        phone=request.POST.get('phone'),
                        gender=request.POST.get('gender'))
+
+            registered = True
 
             username = user_form.cleaned_data.get('username')
             raw_password = user_form.cleaned_data.get('password1')
@@ -35,7 +36,8 @@ def signup(request):
 
             login(request, user)
             return redirect('index')
-
+        else:
+            print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = ProfileForm()

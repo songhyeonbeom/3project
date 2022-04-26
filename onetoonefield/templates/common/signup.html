@@ -3,7 +3,7 @@
 <div class="container my-3">
     <div class="row my-3">
         <div class="col-4">
-            <h4>teachcom 테스트 회원가입</h4>
+            <h4>common 회원가입</h4>
         </div>
     </div>
     <form method="post" class="post-form" action="{% url 'common:signup' %}">
@@ -40,40 +40,46 @@
                    value="{{ form.email.value|default_if_none:'' }}">
         </div>
 
+
         <div class="form-group">
             <label for="birth_date">생년월일</label>
             <input type="date" class="form-control" name="birth_date" id="birth_date"
                    value="{{ form.birth_date.value|default_if_none:'' }}"
                    style="width:200px; margin:auto;">
         </div>
-
-        <div class="form-group">
-            <label for="nickname">닉네임</label>
-            <input type="text" class="form-control" name="nickname" id="nickname"
-                   value="{{ form.nickname.value|default_if_none:'' }}">
-        </div>
-
-
-
-
+        <br>
         <div class="form-group">
             <label>성별</label><br>
 
             <label for="man">남자</label>
-            <input type="radio" name="age" id="man"
-                   value="{{ form.age.value|default_if_none:'0' }}">
+            <input type="radio" name="gender" id="man"
+                   value="{{ form.gender.value|default_if_none:'0' }}">
             <label for="woman">여자</label>
-            <input type="radio" name="age" id="woman"
-                   value="{{ form.age.value|default_if_none:'1' }}">
+            <input type="radio" name="gender" id="woman"
+                   value="{{ form.gender.value|default_if_none:'1' }}">
             <label for="goman">고자</label>
-            <input type="radio" name="age" id="goman"
-                   value="{{ form.age.value|default_if_none:'2' }}">
+            <input type="radio" name="gender" id="goman"
+                   value="{{ form.gender.value|default_if_none:'2' }}">
         </div>
+        <br>
+        <div class="form-group">
+            <label for="address">주소</label>
+            <input type="text" class="form-control" name="address" id="address"
+                   value="{{ form.address.value|default_if_none:'' }}">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="phone">핸드폰</label>
+            <input type="tel" class="form-control" name="phone" id="phone"
+                   value="{{ form.phone.value|default_if_none:'' }}">
+        </div>
+        <br>
 
 
         <button type="submit" class="btn btn-primary">생성하기</button>
     </form>
 </div>
 {% endblock %}
+
 
 
