@@ -24,7 +24,10 @@ def signup(request):
 
             profile = Profile.objects.filter(user_id=int(user.id)). \
                 update(birth_date=request.POST.get('birth_date'),
-                       gender2=request.POST.get('gender'),
+
+                       gender=request.POST.get('gender'),
+                       gender2=request.POST.get('gender2'),
+
                        address=request.POST.get('address'),
                        phone=request.POST.get('phone'))
 
@@ -49,3 +52,6 @@ def signup(request):
 
 def index(request):
     return render(request, 'common/login.html')
+
+
+
