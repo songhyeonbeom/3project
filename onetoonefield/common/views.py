@@ -25,11 +25,16 @@ def signup(request):
             profile = Profile.objects.filter(user_id=int(user.id)). \
                 update(birth_date=request.POST.get('birth_date'),
 
+                       address=request.POST.get('address'),
+                       phone=request.POST.get('phone'),
+
                        gender=request.POST.get('gender'),
                        gender2=request.POST.get('gender2'),
 
-                       address=request.POST.get('address'),
-                       phone=request.POST.get('phone'))
+
+                       position=request.POST.get('position'))
+
+
 
             registered = True
 

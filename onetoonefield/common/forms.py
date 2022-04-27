@@ -19,15 +19,7 @@ class ProfileForm(forms.ModelForm):
     gender = forms.CharField(label="성별1")
     gender2 = forms.CharField(label="성별2")
 
-
-
-    # position_choices=[
-    #     (None, '선택'),
-    #     ('개발', '개발'),
-    #     ('기획', '기획'),
-    #     ('디자인', '디자인'),
-    # ]
-    position = forms.ChoiceField(label="내가 선택한 포지션은 ", choices=position_choices, required=True)
+    position = forms.ChoiceField(label="내가 선택한 포지션은 ", choices=Profile.position_choices, required=True)
 
 
     class Meta:
