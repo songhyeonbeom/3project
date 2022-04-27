@@ -15,18 +15,21 @@ class Profile(models.Model):
     gender = models.CharField(max_length=5, null=True)  # 성별
     gender2 = models.CharField(max_length=3, null=True)
 
-    position_choices = [ (None, '선택'),
+
+    gender3_choices = [ (None, '--선택--'),
+                       ('남자', '남자'),
+                       ('여자', '여자'),
+                       ('고자', '고자'),
+                       ('양성자', '양성자'),
+                       ('외계인', '외계인'),]
+    gender3 = models.CharField(max_length=10, choices=gender3_choices, default='--선택--', )
+
+
+    position_choices = [ (None, '--선택--'),
                          ('개발', '개발'),
                          ('기획', '기획'),
                          ('디자인', '디자인'), ]
-    position = models.CharField(max_length=10, choices=position_choices, default='선택', )
-
-
-    def is_upperclass(self):
-        return self.year_in_school in (self.JUNIOR, self.SENIOR)
-
-
-
+    position = models.CharField(max_length=10, choices=position_choices, default='--선택--', )
 
 
 

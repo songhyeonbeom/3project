@@ -6,11 +6,12 @@
             <h4>회원가입</h4>
         </div>
     </div>
-    <!--    <form method="post" class="post-form" action="{% url 'common:signup' %}">- -->
-    <!--        {% csrf_token %}-->
-    <!--        {{ user_form.as_p }}-->
-    <!--        {{ profile_form.as_p }}-->
-    <!--        </form>-->
+
+
+
+
+
+
     <form method="post" class="post-form" action="{% url 'common:signup' %}">
         {% csrf_token %}
         {% include "form_errors.html" %}
@@ -48,9 +49,9 @@
         <div class="form-group">
             <label for="gender2">성별</label>
             <select name="gender2" id="gender2">
-                <option value="고자">고자</option>
-                <option value="여자">여자</option>
                 <option value="남자" selected>남자</option>
+                <option value="여자">여자</option>
+                <option value="고자">고자</option>
             </select>
         </div>
 

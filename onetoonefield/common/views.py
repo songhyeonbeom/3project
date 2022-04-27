@@ -31,6 +31,7 @@ def signup(request):
                        gender=request.POST.get('gender'),
                        gender2=request.POST.get('gender2'),
 
+                       gender3=request.POST.get('gender3'),
 
                        position=request.POST.get('position'))
 
