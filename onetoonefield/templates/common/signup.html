@@ -1,83 +1,71 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-3">
+<div class="container my-3"  style="text-align:center; width:200px; margin:auto;">
     <div class="row my-3">
-        <div class="col-4">
-            <h4>common 회원가입</h4>
+        <div class="col-15">
+            <h4>회원가입</h4>
         </div>
     </div>
-    <form method="post" class="post-form" action="{% url 'common:signup' %}">
+    <form method="post" class="post-form" action="{% url 'common:signup' %}">-
         {% csrf_token %}
-        {% include "form_errors.html" %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        </form>
+<!--    <form method="post" class="post-form" action="{% url 'common:signup' %}">-->
+<!--        {% csrf_token %}-->
+<!--        {% include "form_errors.html" %}-->
+<!--        <div class="form-group">-->
+<!--            <label for="first_name">이름</label>-->
+<!--            <input autofocus type="text" class="form-control" name="first_name" id="first_name"-->
+<!--                   value="{{ form.username.value|default_if_none:'' }}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="username">로그인 ID</label>-->
+<!--            <input type="text" class="form-control" name="username" id="username"-->
+<!--                   value="{{ form.username.value|default_if_none:'' }}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="password1">비밀번호</label>-->
+<!--            <input type="password" class="form-control" name="password1" id="password1"-->
+<!--                   value="{{ form.password1.value|default_if_none:'' }}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="password2">비밀번호 확인</label>-->
+<!--            <input type="password" class="form-control" name="password2" id="password2"-->
+<!--                   value="{{ form.password2.value|default_if_none:'' }}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="email">이메일</label>-->
+<!--            <input type="text" class="form-control" name="email" id="email"-->
+<!--                   value="{{ form.email.value|default_if_none:'' }}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="birth_date">생년월일</label>-->
+<!--            <input type="date" class="form-control" name="birth_date" id="birth_date"-->
+<!--                   value="{{ form.birth_date.value|default_if_none:'' }}">-->
+<!--        </div>-->
 
-        <div class="form-group">
-            <label for="first_name">이름</label>
-            <input autofocus type="text" class="form-control" name="first_name" id="first_name"
-                   value="{{ form.username.value|default_if_none:'' }}">
-        </div>
+<!--        <div class="form-group">-->
+<!--            <label for="gender2">성별</label>-->
+<!--            <select name="gender2" id="gender2">-->
+<!--                <option value="고자">고자</option>-->
+<!--                <option value="여자">여자</option>-->
+<!--                <option value="남자" selected>남자</option>-->
+<!--            </select>-->
+<!--        </div>-->
 
-        <div class="form-group">
-            <label for="username">로그인 ID</label>
-            <input type="text" class="form-control" name="username" id="username"
-                   value="{{ form.username.value|default_if_none:'' }}">
-        </div>
-
-        <div class="form-group">
-            <label for="password1">비밀번호</label>
-            <input type="password" class="form-control" name="password1" id="password1"
-                   value="{{ form.password1.value|default_if_none:'' }}">
-        </div>
-
-        <div class="form-group">
-            <label for="password2">비밀번호 확인</label>
-            <input type="password" class="form-control" name="password2" id="password2"
-                   value="{{ form.password2.value|default_if_none:'' }}">
-        </div>
-
-        <div class="form-group">
-            <label for="email">이메일</label>
-            <input type="text" class="form-control" name="email" id="email"
-                   value="{{ form.email.value|default_if_none:'' }}">
-        </div>
-
-
-        <div class="form-group">
-            <label for="birth_date">생년월일</label>
-            <input type="date" class="form-control" name="birth_date" id="birth_date"
-                   value="{{ form.birth_date.value|default_if_none:'' }}"
-                   style="width:200px; margin:auto;">
-        </div>
-        <br>
-        <div class="form-group">
-            <label>성별</label><br>
-
-            <label for="man">남자</label>
-            <input type="radio" name="gender" id="man"
-                   value="{{ form.gender.value|default_if_none:'0' }}">
-            <label for="woman">여자</label>
-            <input type="radio" name="gender" id="woman"
-                   value="{{ form.gender.value|default_if_none:'1' }}">
-            <label for="goman">고자</label>
-            <input type="radio" name="gender" id="goman"
-                   value="{{ form.gender.value|default_if_none:'2' }}">
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="address">주소</label>
-            <input type="text" class="form-control" name="address" id="address"
-                   value="{{ form.address.value|default_if_none:'' }}">
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="phone">핸드폰</label>
-            <input type="tel" class="form-control" name="phone" id="phone"
-                   value="{{ form.phone.value|default_if_none:'' }}">
-        </div>
-        <br>
-
-
-        <button type="submit" class="btn btn-primary">생성하기</button>
-    </form>
+<!--        <div class="form-group">-->
+<!--            <label for="address">주소</label>-->
+<!--            <input type="text" class="form-control" name="address" id="address"-->
+<!--                   value="{{ form.address.value|default_if_none:'' }}">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="phone">핸드폰</label>-->
+<!--            <input type="tel" class="form-control" name="phone" id="phone"-->
+<!--                   value="{{ form.phone.value|default_if_none:'' }}">-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-primary">생성하기</button>-->
+<!--    </form>-->
 </div>
 {% endblock %}
 

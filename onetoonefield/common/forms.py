@@ -17,8 +17,9 @@ class ProfileForm(forms.ModelForm):
     address = forms.CharField(label="주소")
     birth_date = forms.DateField(label="생일")
     phone = forms.CharField(label="핸드폰")
+    gender2 = forms.CharField(label="성별")
 
 
     class Meta:
         model = Profile
-        fields = ("address", "phone", "birth_date")
+        fields = ("address", "phone", "birth_date", "gender2")

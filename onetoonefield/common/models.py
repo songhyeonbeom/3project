@@ -13,7 +13,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=5, null=True)  # 성별
     address = models.CharField(max_length=30, null=True)  # 주소
     phone = models.CharField(max_length=15, null=True)  # 핸드폰
-
+    gender2 = models.CharField(max_length=3, null=True)
 
 @receiver(post_save, sender=auth.models.User)
 def create_user_profile(sender, instance, created, **kwargs):
