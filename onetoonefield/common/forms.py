@@ -28,3 +28,22 @@ class ProfileForm(forms.ModelForm):
         fields = ("address", "phone", "birth_date", "gender2")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

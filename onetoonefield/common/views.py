@@ -4,7 +4,6 @@ from common.forms import UserForm, ProfileForm
 from common.models import Profile
 from django.views.decorators.csrf import csrf_exempt
 
-
 # Create your views here.
 
 @csrf_exempt
@@ -14,10 +13,20 @@ def signup(request):
         profile_form = ProfileForm(data=request.POST)
 
         print(request.POST.get('gender2'))
+        print(request.POST.get('phone'))
         print(user_form.is_valid(), profile_form.is_valid())
 
         if user_form.is_valid() and profile_form.is_valid():
-            print(request.POST.get('realname'))
+            print(request.POST.get('first_name'))
+
+            phone=profile_form.cleaned_data['phone']
+
+
+            print(request.POST.get('phone'))
+
+
+
+
 
             user = user_form.save(commit=False)
             user.save()
