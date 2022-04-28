@@ -11,15 +11,10 @@
     <form method="post" class="post-form" action="{% url 'common:signup' %}">
         {% csrf_token %}
         {% include "form_errors.html" %}
-        <div class="form-group">
-            <label for="first_name">name :</label>
-            <input autofocus type="text" name="first_name" id="first_name"
-                   value="{{ form.username.value|default_if_none:'' }}"
-                   style="text-align:center; width:160px; margin:auto;">
-        </div>
+
         <div class="form-group">
             <label for="username">ID :</label>
-            <input type="text" name="username" id="username"
+            <input autofocus type="text" name="username" id="username"
                    value="{{ form.username.value|default_if_none:'' }}"
                    style="text-align:center; width:160px; margin:auto;">
         </div>
@@ -33,6 +28,12 @@
             <label for="password2">passwore 확인 :</label>
             <input type="password" name="password2" id="password2"
                    value="{{ form.password2.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
+        </div>
+        <div class="form-group">
+            <label for="first_name">name :</label>
+            <input type="text" name="first_name" id="first_name"
+                   value="{{ form.username.value|default_if_none:'' }}"
                    style="text-align:center; width:160px; margin:auto;">
         </div>
         <div class="form-group">
@@ -56,10 +57,14 @@
                 <option value="여자">여자</option>
                 <option value="고자">고자</option>
                 <option value="중성자">중성자</option>
-                <option value="외계인">외계인</option>
+                <option value="양성자">양성자</option>
+                <option value="뉴클리어">뉴클리어</option>
+                <option value="에일리언">에일리언</option>
+                <option value="프레데터">프레데터</option>
             </select>
         </div>
 
+        
         <div class="form-group">
             <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
             <input type="text" name="postcode" id="postcode" placeholder="우편번호"
