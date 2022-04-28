@@ -12,73 +12,77 @@
         {% csrf_token %}
         {% include "form_errors.html" %}
         <div class="form-group">
-            <label for="first_name">이름</label>
-            <input autofocus type="text" class="form-control" name="first_name" id="first_name"
-                   value="{{ form.username.value|default_if_none:'' }}">
+            <label for="first_name">name :</label>
+            <input autofocus type="text" name="first_name" id="first_name"
+                   value="{{ form.username.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
         </div>
         <div class="form-group">
-            <label for="username">로그인 ID</label>
-            <input type="text" class="form-control" name="username" id="username"
-                   value="{{ form.username.value|default_if_none:'' }}">
+            <label for="username">ID :</label>
+            <input type="text" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
         </div>
         <div class="form-group">
-            <label for="password1">비밀번호</label>
-            <input type="password" class="form-control" name="password1" id="password1"
-                   value="{{ form.password1.value|default_if_none:'' }}">
+            <label for="password1">passwore :</label>
+            <input type="password" name="password1" id="password1"
+                   value="{{ form.password1.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
         </div>
         <div class="form-group">
-            <label for="password2">비밀번호 확인</label>
-            <input type="password" class="form-control" name="password2" id="password2"
-                   value="{{ form.password2.value|default_if_none:'' }}">
+            <label for="password2">passwore 확인 :</label>
+            <input type="password" name="password2" id="password2"
+                   value="{{ form.password2.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
         </div>
         <div class="form-group">
-            <label for="email">이메일</label>
-            <input type="text" class="form-control" name="email" id="email"
-                   value="{{ form.email.value|default_if_none:'' }}">
+            <label for="email">E-mail :</label>
+            <input type="text" name="email" id="email"
+                   value="{{ form.email.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
         </div>
         <div class="form-group">
-            <label for="birth_date">생년월일</label>
-            <input type="date" class="form-control" name="birth_date" id="birth_date"
-                   value="{{ form.birth_date.value|default_if_none:'' }}">
+            <label for="birth_date">생년월일 :</label>
+            <input type="date" name="birth_date" id="birth_date"
+                   value="{{ form.birth_date.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
         </div>
 
         <div class="form-group">
-            <label for="gender2">성별</label>
+            <label for="gender2">성별 :</label>
             <select name="gender2" id="gender2">
-                <option value="남자" selected>남자</option>
+                <option value="남자" selected>---선택하기---</option>
+                <option value="남자">남자</option>
                 <option value="여자">여자</option>
                 <option value="고자">고자</option>
+                <option value="중성자">중성자</option>
+                <option value="외계인">외계인</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label>성별</label><br>
-            <label for="man">남자</label>
-            <input type="radio" name="gender" id="man"
-                   value='0'>
-            <label for="woman">여자</label>
-            <input type="radio" name="gender" id="woman"
-                   value='1'>
-            <label for="goman">고자</label>
-            <input type="radio" name="gender" id="goman"
-                   value='2'>
-        </div>
+            <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+            <input type="text" name="postcode" id="postcode" placeholder="우편번호"
+                   value="{{ form.postcode.value|default_if_none:'' }}">
 
+            <input type="text" name="roadAddress" id="roadAddress" placeholder="도로명주소"
+                   value="{{ form.roadAddress.value|default_if_none:'' }}">
 
-        <div class="form-group">
-            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-            <input type="text" class="form-control" id="sample4_postcode" placeholder="우편번호">
-            <input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소">
-            <input type="text" class="form-control" id="sample4_jibunAddress" placeholder="지번주소">
+            <input type="text" name="jibunAddress" id="jibunAddress" placeholder="지번주소"
+                   value="{{ form.jibunAddress.value|default_if_none:'' }}">
+
             <span id="guide" style="color:#999;display:none"></span>
-            <input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소">
-            <input type="text" class="form-control" id="sample4_extraAddress" placeholder="참고항목">
+
+            <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소"
+                   value="{{ form.detailAddress.value|default_if_none:'' }}">
+
+            <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목"
+                   value="{{ form.extraAddress.value|default_if_none:'' }}">
         </div>
 
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
-    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-    function sample4_execDaumPostcode() {
+    function execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -99,19 +103,19 @@
                 }
                 // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
                 if(extraRoadAddr !== ''){
-                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                    extraRoadAddr = '(' + extraRoadAddr + ')';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample4_postcode').value = data.zonecode;
-                document.getElementById("sample4_roadAddress").value = roadAddr;
-                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("roadAddress").value = roadAddr;
+                document.getElementById("jibunAddress").value = data.jibunAddress;
 
                 // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
                 if(roadAddr !== ''){
-                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                    document.getElementById("extraAddress").value = extraRoadAddr;
                 } else {
-                    document.getElementById("sample4_extraAddress").value = '';
+                    document.getElementById("extraAddress").value = '';
                 }
 
                 var guideTextBox = document.getElementById("guide");
@@ -133,6 +137,7 @@
         }).open();
     }
 
+
         </script>
 
 
@@ -144,9 +149,10 @@
 
 
         <div class="form-group">
-            <label for="phone">핸드폰</label>
-            <input type="tel" class="form-control" name="phone" id="phone"
-                   value="{{ form.phone.value|default_if_none:'' }}">
+            <label for="phone">phone :</label>
+            <input type="tel" name="phone" id="phone"
+                   value="{{ form.phone.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
         </div>
         <button type="submit" class="btn btn-primary">생성하기</button>
     </form>

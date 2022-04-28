@@ -34,15 +34,23 @@ def signup(request):
             profile = Profile.objects.filter(user_id=int(user.id)). \
                 update(birth_date=request.POST.get('birth_date'),
 
-                       address=request.POST.get('address'),
                        phone=request.POST.get('phone'),
 
-                       gender=request.POST.get('gender'),
                        gender2=request.POST.get('gender2'),
 
-                       gender3=request.POST.get('gender3'),
+                       # gender=request.POST.get('gender'),
+                       # gender3=request.POST.get('gender3'),
+                       # position=request.POST.get('position'),
 
-                       position=request.POST.get('position'))
+
+                       postcode=request.POST.get('postcode'),
+                       roadAddress=request.POST.get('roadAddress'),
+                       jibunAddress=request.POST.get('jibunAddress'),
+                       detailAddress=request.POST.get('detailAddress'),
+                       extraAddress=request.POST.get('extraAddress')
+
+                       )
+
 
 
 
