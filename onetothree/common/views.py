@@ -22,9 +22,6 @@ def signup(request):
         if user_form.is_valid() and profile_form.is_valid():
             print(request.POST.get('first_name'))
 
-            phone=profile_form.cleaned_data['phone']
-
-
             print(request.POST.get('phone'))
 
 
