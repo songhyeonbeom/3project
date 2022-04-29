@@ -1,23 +1,109 @@
 {% extends "base.html" %}
 {% block content %}
+
+<script>
+function validateForm() {
+    alert("111111");
+  let x = document.forms["first_form"]["username"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+    alert("222222");
+
+  let y = document.forms["first_form"]["password1"].value;
+  if (y == "")
+  {
+    alert("Passwd must be filled out");
+    return false;
+  }
+
+  if( first_id_overlap_check() == false)
+  {
+      alert("아이디 중복체크를 다시 해주시기 바랍니다.");
+      return false;
+  }
+  else{
+
+        return true;
+  }
+}
+
+function first_id_overlap_check() {
+
+  if ($('.username_input').attr("check_result") == "fail"){
+    alert("아이디 중복체크를 해주시기 바랍니다.");
+    $('.username_input').focus();
+    return false;
+  }
+}
+
+function id_overlap_check() {
+
+$('.username_input').change(function () {
+  $('#id_check_sucess').hide();
+  $('.id_overlap_button').show();
+  $('.username_input').attr("check_result", "fail");
+})
+
+if ($('.username_input').val() == '') {
+  alert('ID를 입력하세요.')
+  return;
+}
+
+id_overlap_input = document.querySelector('input[name="username"]');
+
+$.ajax({
+  url: "{% url 'common:id_overlap_check' %}",
+  data: {
+    'username': id_overlap_input.value
+  },
+  datatype: 'json',
+  success: function (data) {
+    console.log(data['overlap']);
+    if (data['overlap'] == "fail") {
+      alert("이미 존재하는 ID 입니다.");
+      id_overlap_input.focus();
+      return;
+    } else {
+      alert("사용가능한 ID 입니다.");
+      $('.username_input').attr("check_result", "success");
+      $('#id_check_sucess').show();
+      $('.id_overlap_button').hide();
+      return;
+    }
+  }
+});
+}
+</script>
+
 <div class="container my-7" style="text-align:center; width:400px; margin:auto;">
     <div class="row my-3">
         <div class="col-15">
             <h4>회원가입</h4>
+            <h7>* ID 중복확인 만들기. *
+                빨간 문구/ 에러메세지 띄우기.
+            </h7>
         </div>
     </div>
 
 
-    <form method="post" class="post-form" action="{% url 'common:signup' %}">
+    <form name="first_form" method="post"  onsubmit="return validateForm()"  class="post-form" action="{% url 'common:signup' %}">
         {% csrf_token %}
         {% include "form_errors.html" %}
 
         <div class="form-group">
             <label for="username">ID :</label>
-            <input autofocus type="text" name="username" id="username"
-                   value="{{ form.username.value|default_if_none:'' }}"
-                   style="text-align:center; width:160px; margin:auto;">
+<!--                        <input autofocus type="text" name="username" id="username"-->
+<!--                               value="{{ form.username.value|default_if_none:'' }}"-->
+<!--                               style="text-align:center; width:160px; margin:auto;">-->
+            <input autofocus type="text" check_result="fail" class="username_input" id="username" name="username" check_result="fail" required/>
+            <button type="button" class="id_overlap_button" onclick="id_overlap_check()">중복검사</button>
+            <img id="id_check_sucess" style="display: none;">
+
         </div>
+
+
         <div class="form-group">
             <label for="password1">passwore :</label>
             <input type="password" name="password1" id="password1"
@@ -37,18 +123,11 @@
                    style="text-align:center; width:160px; margin:auto;">
         </div>
         <div class="form-group">
-            <label for="email">E-mail :</label>
-            <input type="text" name="email" id="email"
-                   value="{{ form.email.value|default_if_none:'' }}"
-                   style="text-align:center; width:160px; margin:auto;">
-        </div>
-        <div class="form-group">
             <label for="birth_date">생년월일 :</label>
             <input type="date" name="birth_date" id="birth_date"
                    value="{{ form.birth_date.value|default_if_none:'' }}"
                    style="text-align:center; width:160px; margin:auto;">
         </div>
-
         <div class="form-group">
             <label for="gender2">성별 :</label>
             <select name="gender2" id="gender2">
@@ -63,8 +142,14 @@
                 <option value="프레데터">프레데터</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="email">E-mail :</label>
+            <input type="text" name="email" id="email"
+                   value="{{ form.email.value|default_if_none:'' }}"
+                   style="text-align:center; width:160px; margin:auto;">
+        </div>
 
-        
+
         <div class="form-group">
             <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
             <input type="text" name="postcode" id="postcode" placeholder="우편번호"
@@ -86,6 +171,7 @@
         </div>
 
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
         <script>
     function execDaumPostcode() {
         new daum.Postcode({
@@ -143,6 +229,7 @@
     }
 
 
+
         </script>
 
 
@@ -159,7 +246,7 @@
                    value="{{ form.phone.value|default_if_none:'' }}"
                    style="text-align:center; width:160px; margin:auto;">
         </div>
-        <button type="submit" class="btn btn-primary">생성하기</button>
+        <button type="submit" class="btn btn-primary" onclick="first_id_overlap_check()">생성하기</button>
     </form>
 </div>
 {% endblock %}

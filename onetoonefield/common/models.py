@@ -11,7 +11,7 @@ class Profile(models.Model):
     user = models.OneToOneField(auth.models.User, on_delete=models.CASCADE, related_name='profile')
     birth_date = models.DateField(null=True)  # 생년월일
     phone = models.CharField(max_length=15, null=True)  # 핸드폰
-    gender2 = models.CharField(max_length=3, null=True)
+    gender2 = models.CharField(max_length=5, null=True)
 
     postcode = models.CharField(max_length=10, null=True)
     roadAddress = models.CharField(max_length=50, null=True)

@@ -1,0 +1,97 @@
+ajax 설정을 해줘야하는데 안해놓고 안된다하고있었다.
+base.html 에 스크립트로 넣어줘야 얘가 이해를 하고 작동한다.
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+https://ssungkang.tistory.com/entry/javascript-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%EC%8B%9C-%EC%95%84%EC%9D%B4%EB%94%94-%EC%A4%91%EB%B3%B5-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0-ajax
+
+** sign_up.html
+
+<input type="text" class="username_input" name="username" check_result="fail" required />
+<button type="button" class="id_overlap_button" onclick="id_overlap_check()">중복검사</button>
+<img id="id_check_sucess" style="display: none;">
+
+원래 쓰던 username 이 있다.
+지금 가져오는게 name설정이 같은 이름이다.
+위에 원래 있던거를 주석처리로 숨기고 가져오는걸 그대로 써보겠다.
+
+id_overlap_check 함수를 실행시켜야 한다. views.py에 만들어 줘야 실행하겠지.
+
+# views.py
+def id_overlap_check(request):
+    username = request.GET.get('username')
+    try:
+        # 중복 검사 실패
+        user = User.objects.get(username=username)
+    except:
+        # 중복 검사 성공
+        user = None
+    if user is None:
+        overlap = "pass"
+    else:
+        overlap = "fail"
+    context = {'overlap': overlap}
+    return JsonResponse(context)
+
+
+
+
+  function id_overlap_check() {
+
+    $('.username_input').change(function () {
+      $('#id_check_sucess').hide();
+      $('.id_overlap_button').show();
+      $('.username_input').attr("check_result", "fail");
+    })
+
+
+    if ($('.username_input').val() == '') {
+      alert('이메일을 입력해주세요.')
+      return;
+    }
+
+    id_overlap_input = document.querySelector('input[name="username"]');
+
+    $.ajax({
+      url: "{% url '(앱 이름):id_overlap_check' %}",
+      data: {
+        'username': id_overlap_input.value
+      },
+      datatype: 'json',
+      success: function (data) {
+        console.log(data['overlap']);
+        if (data['overlap'] == "fail") {
+          alert("이미 존재하는 아이디 입니다.");
+          id_overlap_input.focus();
+          return;
+        } else {
+          alert("사용가능한 아이디 입니다.");
+          $('.username_input').attr("check_result", "success");
+          $('#id_check_sucess').show();
+          $('.id_overlap_button').hide();
+          return;
+        }
+      }
+    });
+  }
+
+
+
+앱 이름 만들어준게 보면  ( 어디에:어디 ) 구조,
+저건 urls.py 에 설정을 해줘야 먹음 아니면 찾지를 못하고 그냥 넘어가짐
+
+    path('signup_check/', views.id_overlap_check, name='id_overlap_check'),
+이렇게 적어주니까 안식해서 이동함.
+name 을 인식 시켜줘야 찾아가지는걸 확인했다.
+
+
+
+        <button type="button" class="id_overlap_button" onclick="id_overlap_check()">중복검사</button>
+
+        <button type="submit" class="btn btn-primary">생성하기</button>
+
+
+
+
+
+
+

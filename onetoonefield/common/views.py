@@ -1,3 +1,6 @@
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from common.forms import UserForm, ProfileForm
@@ -31,11 +34,11 @@ def signup(request):
             user = user_form.save(commit=False)
             user.save()
 
+            messages.success(request, '성공적!!')
+
             profile = Profile.objects.filter(user_id=int(user.id)). \
                 update(birth_date=request.POST.get('birth_date'),
-
                        phone=request.POST.get('phone'),
-
                        gender2=request.POST.get('gender2'),
 
                        # gender=request.POST.get('gender'),
@@ -76,5 +79,24 @@ def signup(request):
 def index(request):
     return render(request, 'common/login.html')
 
+
+
+
+
+def id_overlap_check(request):
+    username = request.GET.get('username')
+    print(username)
+    try:
+        # 중복 검사 실패
+        user = User.objects.get(username=username)
+    except:
+        # 중복 검사 성공
+        user = None
+    if user is None:
+        overlap = "pass"
+    else:
+        overlap = "fail"
+    context = {'overlap': overlap}
+    return JsonResponse(context)
 
 
