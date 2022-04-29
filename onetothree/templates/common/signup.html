@@ -32,7 +32,7 @@ function validateForm() {
 function first_id_overlap_check() {
 
   if ($('.username_input').attr("check_result") == "fail"){
-    alert("아이디 중복체크를 해주시기 바랍니다.");
+    alert("아이디 중복체크를 해주시기 바랍니다.999");
     $('.username_input').focus();
     return false;
   }
@@ -89,22 +89,19 @@ $.ajax({
             </h7>
         </div>
     </div>
+    <form name="first_form" method="post"  onsubmit="return validateForm()"  class="post-form"
+          action="{% url 'common:signup' %}">
 
-    <form name="first_form" method="post"  onsubmit="return validateForm()"  class="post-form" action="{% url 'common:signup' %}">
         {% csrf_token %}
         {% include "form_errors.html" %}
 
         <div class="form-group">
             <label for="username">ID :</label>
-<!--                        <input autofocus type="text" name="username" id="username"-->
-<!--                               value="{{ form.username.value|default_if_none:'' }}"-->
-<!--                               style="text-align:center; width:160px; margin:auto;">-->
             <input autofocus type="text" check_result="fail" class="username_input"
                    id="username" name="username" check_result="fail"
                    style="text-align:center; width:160px; margin:auto;" required/>
             <button type="button" class="id_overlap_button" onclick="id_overlap_check()">중복검사</button>
             <img id="id_check_sucess" style="display: none;">
-
         </div>
 
         <div class="form-group">
@@ -113,6 +110,7 @@ $.ajax({
                    value="{{ form.password1.value|default_if_none:'' }}"
                    style="text-align:center; width:160px; margin:auto;">
         </div>
+
         <div class="form-group">
             <label for="password2">passwore 확인 :</label>
             <input type="password" name="password2" id="password2"
