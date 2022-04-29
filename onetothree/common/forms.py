@@ -5,19 +5,23 @@ from common.models import Profile
 
 
 class UserForm(UserCreationForm):
-    email = forms.EmailField(label="이메일")
+    # email = forms.EmailField(label="이메일")
+    pass
+
 
     class Meta:
         model = User
-        fields = ("first_name", "username", "password1", "password2", "email")
+        fields = ("username", "password1", "password2", )
+
+                  # "first_name", "password1", "password2", "email")
 
 
 class ProfileForm(forms.ModelForm):
     # address = forms.CharField(label="주소")
-    phone = forms.CharField(label="핸드폰")
-    birth_date = forms.DateField(label="생년월일")
-    gender2 = forms.CharField(label="성별2")
-
+    # phone = forms.CharField(label="핸드폰")
+    # birth_date = forms.DateField(label="생년월일")
+    # gender2 = forms.CharField(label="성별2")
+    pass
 
 
 
@@ -29,12 +33,14 @@ class ProfileForm(forms.ModelForm):
 
 
 
-
+    #
     class Meta:
         model = Profile
-        fields = ("phone", "birth_date", "gender2")
+        fields = ()
+        # fields = ("phone", "birth_date", "gender2")
 
-
+    #
+    #
 
 
 
