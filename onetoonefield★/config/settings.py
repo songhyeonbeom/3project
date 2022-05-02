@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'common.apps.CommonConfig',
+    'insta.apps.InstaConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',

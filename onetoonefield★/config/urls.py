@@ -16,12 +16,17 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
+
 from common import views
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
+
+    path('', RedirectView.as_view(url='/insta/', permanent=True)),
 
     path('admin/', admin.site.urls),
     path('common/', include('common.urls')),
+    path('insta/', include('insta.urls')),
 ]

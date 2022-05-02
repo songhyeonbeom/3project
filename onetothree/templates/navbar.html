@@ -1,7 +1,6 @@
 
 
 
-
 {% if user.is_authenticated %}
 <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
 {% else %}
