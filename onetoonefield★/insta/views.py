@@ -73,10 +73,12 @@ def myPhotoAB(request, c_slug=None):
     c_page = None
     photos_list = None
     if c_slug != None:
+        print('111111111111111111111')
         c_page = get_object_or_404(Album, slug = c_slug)
         photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
     else:
-        photos_list = Photo.objects.order_by('-upload_dt')
+        print('222222222222222222222')
+        photos_list = Photo.objects.all().order_by('upload_dt')
     paginator = Paginator(photos_list, 12)
     try:
         page = int(request.GET.get('page', 1))
@@ -88,8 +90,7 @@ def myPhotoAB(request, c_slug=None):
         photos = paginator.page(paginator.num_pages)
 
     return render(request, 'insta/myalbum.html', {'album': c_page, 'photos': photos})
-
-
+    print('3333333333333333333333333')
 
 
 def allPhotoAB(request, c_slug=None):

@@ -76,8 +76,8 @@ def signup(request):
                   {'user_form': user_form, 'profile_form': profile_form})
 
 
-def index(request):
-    return render(request, 'common/login.html')
+# def index(request):
+#     return render(request, 'common/login.html')
 
 
 
