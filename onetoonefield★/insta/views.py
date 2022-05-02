@@ -18,7 +18,7 @@ class PhotoCV(LoginRequiredMixin, CreateView, ):
     login_url = '/common/login/'
     redirect_field_name = 'login'
 
-    fields = ('album', 'image', 'descfiption',)
+    fields = ('album', 'image', 'description',)
 
     success_url = reverse_lazy('insta:allPhotoAB')
 
@@ -30,6 +30,10 @@ class PhotoCV(LoginRequiredMixin, CreateView, ):
         context = super().get_context_data(**kwargs)
         context['form'].fields['album'].queryset = Album.objects.filter(owner=self.request.user)
         return context
+
+
+
+
 
 
 class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
@@ -67,12 +71,12 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
 # 손봐야될 부분
 def myPhotoAB(request, c_slug=None):
     c_page = None
-    photo_list = None
+    photos_list = None
     if c_slug != None:
-        c_page = get_object_or_404(Album, slug=c_slug)
-        photos_list = Photo.object.filter(album=c_page).order_by('-upload_dt')
+        c_page = get_object_or_404(Album, slug = c_slug)
+        photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
     else:
-        photos_list = Photo.object.order_by('-upload_dt')
+        photos_list = Photo.objects.order_by('-upload_dt')
     paginator = Paginator(photos_list, 12)
     try:
         page = int(request.GET.get('page', 1))
@@ -83,7 +87,9 @@ def myPhotoAB(request, c_slug=None):
     except(EmptyPage, InvalidPage):
         photos = paginator.page(paginator.num_pages)
 
-    return render(request, 'insta/myalbum.html', {'album':c_page, 'photos':photos})
+    return render(request, 'insta/myalbum.html', {'album': c_page, 'photos': photos})
+
+
 
 
 def allPhotoAB(request, c_slug=None):
@@ -91,7 +97,7 @@ def allPhotoAB(request, c_slug=None):
     photos_list = None
     if c_slug != None:
         c_page = get_object_or_404(Album, slug = c_slug)
-        photos_list = Photo.object.filter(album = c_page).order_by('-upload_dt')
+        photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
     else:
         photos_list = Photo.objects.order_by('-upload_dt')
     paginator = Paginator(photos_list, 12)
@@ -105,7 +111,7 @@ def allPhotoAB(request, c_slug=None):
     except(EmptyPage, InvalidPage):
         photos = paginator.page(paginator.num_pages)
 
-    return render(request, 'insta/album.html', {'album':c_page, 'photo':photos})
+    return render(request, 'insta/album.html', {'album':c_page, 'photos':photos})
 
 
 class AlbumLV(ListView):
