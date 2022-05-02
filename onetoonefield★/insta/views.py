@@ -68,6 +68,9 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
             return self.render_to_response(self.get_context_data(form=form))
 
 
+
+
+
 # 손봐야될 부분
 def myPhotoAB(request, c_slug=None):
     c_page = None
@@ -78,19 +81,24 @@ def myPhotoAB(request, c_slug=None):
         photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
     else:
         print('222222222222222222222')
-        photos_list = Photo.objects.all().order_by('upload_dt')
+        photos_list = Photo.objects.all().order_by('-upload_dt')
     paginator = Paginator(photos_list, 12)
     try:
+        print('3333333333333333333333333333')
         page = int(request.GET.get('page', 1))
     except:
+        print('4444444444444444444444444')
         page = 1
     try:
+        print('555555555555555555555555555555555555')
         photos = paginator.page(page)
     except(EmptyPage, InvalidPage):
+        print('66666666666666666666666666')
         photos = paginator.page(paginator.num_pages)
 
     return render(request, 'insta/myalbum.html', {'album': c_page, 'photos': photos})
-    print('3333333333333333333333333')
+
+
 
 
 def allPhotoAB(request, c_slug=None):
@@ -112,7 +120,21 @@ def allPhotoAB(request, c_slug=None):
     except(EmptyPage, InvalidPage):
         photos = paginator.page(paginator.num_pages)
 
+    print('44444444444444444444444444')
     return render(request, 'insta/album.html', {'album':c_page, 'photos':photos})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class AlbumLV(ListView):
