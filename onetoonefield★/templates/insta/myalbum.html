@@ -23,7 +23,7 @@ See Our Photos Collection - PLATE-STUDIO
 
 
 
-        {% for photo in links2 %}
+        {% for photo in photos.object_list %}
         <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">
             <div class="thumbnail" style="width: 100%; margin-bottom: 9%;">
                 <a href="{{ photo.get_absolute_url }}">

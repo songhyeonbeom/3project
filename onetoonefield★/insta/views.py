@@ -75,14 +75,11 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView, ):
 def myPhotoAB(request, c_slug=None):
     c_page = None
     photos_list = None
-    if c_slug != None:
+    if c_slug==None:
         print('111111111111111111111')
-        c_page = get_object_or_404(Album, slug = c_slug)
-        photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
-    else:
-        print('222222222222222222222')
-        photos_list = Photo.objects.all().order_by('-upload_dt')
-    paginator = Paginator(photos_list, 12)
+        allphoto = request.user.id
+        photos_list = Photo.objects.filter(owner_id=allphoto) & Photo.objects.order_by('-upload_dt')
+    paginator = Paginator(photos_list, 6)
     try:
         print('3333333333333333333333333333')
         page = int(request.GET.get('page', 1))
@@ -97,6 +94,36 @@ def myPhotoAB(request, c_slug=None):
         photos = paginator.page(paginator.num_pages)
 
     return render(request, 'insta/myalbum.html', {'album': c_page, 'photos': photos})
+
+
+
+# 됩니다.
+# def myPhotoAB(request, c_slug=None):
+#     c_page = None
+#     photos_list = None
+#     if c_slug != None:
+#         print('111111111111111111111')
+#         c_page = get_object_or_404(Album, slug = c_slug)
+#         photos_list = Photo.objects.filter(album = c_page).order_by('-upload_dt')
+#     else:
+#         print('222222222222222222222')
+#         photos_list = Photo.objects.all().order_by('-upload_dt')
+#     paginator = Paginator(photos_list, 12)
+#     try:
+#         print('3333333333333333333333333333')
+#         page = int(request.GET.get('page', 1))
+#     except:
+#         print('4444444444444444444444444')
+#         page = 1
+#     try:
+#         print('555555555555555555555555555555555555')
+#         photos = paginator.page(page)
+#     except(EmptyPage, InvalidPage):
+#         print('66666666666666666666666666')
+#         photos = paginator.page(paginator.num_pages)
+#
+#     return render(request, 'insta/myalbum.html', {'album': c_page, 'photos': photos})
+
 
 
 
