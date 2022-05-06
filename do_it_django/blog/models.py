@@ -13,8 +13,12 @@ class Post(models.Model):
     
     def __str__(self):
         return f'[{self.pk}]{self.title}'
-        # return '{}'.format(self.title, self.pk)
+        #return '{}'.format(self.title)
 
+    
+    def get_absolute_url(self):
+        return '/blog/{}'.format(self.pk)
+        #return f'/blog/{self.pk}/'
 
 
 
