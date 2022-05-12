@@ -51,11 +51,12 @@ class TestView(TestCase):
         self.assertNotIn('아직 게시물이 없습니다', main_area.text)
     
         
+        
     def test_post_detail(self):
         # 1.1. 포스트가 하나 있다.
         post_001 = Post.objects.create(
             title='첫 번째 포스트입니다.',
-            content='Hello World. We are the world.11111111111111',
+            content='Hello World. We are the world.',
         )
         # 1.2. 그 포스트의 url은 '/blog/1/' 이다.
         self.assertEqual(post_001.get_absolute_url(), '/blog/1/')
