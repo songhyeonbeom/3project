@@ -13,7 +13,7 @@ class TestView(TestCase):
         self.user_test02 = User.objects.create_user(username='test02', password='test020202')
 
         self.category_programming = Category.objects.create(name='programming', slug='programming')
-        self.category_iu = Category.objects.create(name='iu', slug='iu')
+        self.category_IU = Category.objects.create(name='IU', slug='IU')
 
         self.post_001 = Post.objects.create(
             title='첫 번째 포스트입니다.',
@@ -25,7 +25,7 @@ class TestView(TestCase):
         self.post_002 = Post.objects.create(
             title='두 번째 포스팅입니다.',
             content='1등이 전부는 아니잖아요?',
-            category=self.category_iu,
+            category=self.category_IU,
             author=self.user_test02
         )
         
@@ -104,7 +104,7 @@ class TestView(TestCase):
             author=self.user_test01,
         )
         # 1.2. 그 포스트의 url은 '/blog/1/' 이다.
-        self.assertEqual(post_001.get_absolute_url(), '/blog/1/')
+        self.assertEqual(post_001.get_absolute_url(), '/blog/4/')
         
         # 2. 첫 번째 포스트의 상세 페이지 테스트
         # 2.1. 첫 번째 포스트의 url로 접근하면 정상적으로 작동한다(status code: 200).

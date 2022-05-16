@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <div class="row">
 
-                            <ul class="list-unstyled mb-0">
+                            <ul>
                                 {% for category in categories %}
                                 <li>
                                     <a href="{{ category.get_absolute_url }}">{{ category }} ({{ category.post_set.count }})</a>
