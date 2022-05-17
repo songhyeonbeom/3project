@@ -11,6 +11,9 @@ class TestView(TestCase):
         self.client = Client()
         self.user_test01 = User.objects.create_user(username='test01', password='test010101')
         self.user_test02 = User.objects.create_user(username='test02', password='test020202')
+        self.user_test02.is_staff = True
+        self.user_test02.save()
+
 
         self.category_programming = Category.objects.create(name='programming', slug='programming')
         self.category_IU = Category.objects.create(name='IU', slug='IU')
@@ -174,6 +177,35 @@ class TestView(TestCase):
         self.assertNotIn(self.post_003.title, main_area.text)
 
 
-
-
+    def test_create_post(self):
+        # 로그인하지 않으면 status code가 200이면 안된다!
+        response = self.client.get('/blog/create_post/')
+        self.assertNotEqual(response.status_code, 200)
         
+        # staff가 아닌 test01이 로그인을 한다.
+        self.client.login(username='test01', password='test010101')
+        response = self.client.get('/blog/create_post/')
+        self.assertNotEqual(response.status_code, 200)
+        
+        # staff인 test02로 로그인한다.
+        self.client.login(username='test02', password='test020202')
+        response = self.client.get('/blog/create_post/')
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        self.assertEqual('Create Post - Blog', soup.title.text)
+        main_area = soup.find('div', id='main-area')
+        self.assertIn('Create New Post', main_area.text)
+
+        self.client.post(
+            '/blog/create_post/',
+            {
+                'title': 'Post Form 만들기',
+                'content': "Post Form 페이지를 만듭시다.",
+            }
+        )
+        self.assertEqual(Post.objects.count(), 4)
+        last_post = Post.objects.last()
+        self.assertEqual(last_post.title, "Post Form 만들기")
+        self.assertEqual(last_post.author.username, 'test02')
+
