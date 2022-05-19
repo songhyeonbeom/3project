@@ -24,27 +24,23 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             
             tags_str = self.request.POST.get('tags_str')
             if tags_str:
-                tags_str = tags_str.strip()
-                
+                tags_str = tags_str.replace(" ", "")
+                tags_str = tags_str.rstrip(',')
                 tags_str = tags_str.replace(',', ';')
                 tags_list = tags_str.split(';')
                 
                 print(tags_list)
                 for t in tags_list:
-                    if t == '':
-                        print("공백 있음")
-                        continue
+                    t = t.strip()
+                    print(t)
+                    tag, is_tag_created = Tag.objects.get_or_create(name=t)
                     
-                    else:
-                        t = t.strip()
-                        tag, is_tag_created = Tag.objects.get_or_create(name=t)
+                    print(tag, is_tag_created)
                         
-                        print(tag, is_tag_created)
-                            
-                        if is_tag_created and not t.isspace() or t.equal:
-                            tag.slug = slugify(t, allow_unicode=True)
-                            tag.save()
-                            self.object.tags.add(tag)
+                    if is_tag_created:
+                        tag.slug = slugify(t, allow_unicode=True)
+                        tag.save()
+                    self.object.tags.add(tag)
 
             return response
 
