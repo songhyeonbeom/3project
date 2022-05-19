@@ -1,3 +1,4 @@
+from pdb import post_mortem
 from django.test import TestCase, Client
 from bs4 import BeautifulSoup
 from django.contrib.auth.models import User
@@ -21,8 +22,10 @@ class TestView(TestCase):
         self.tag_python_kor = Tag.objects.create(name='파이썬 공부', slug='파이썬-공부')
         self.tag_python = Tag.objects.create(name="python", slug='python')
         self.tag_hello = Tag.objects.create(name='hello', slug='hello')
-
+        
+        # p.353
         self.post_001 = Post.objects.create(
+            id = 1,
             title='첫 번째 포스트입니다.',
             content="hello World. We are the world.",
             category=self.category_programming,
@@ -31,6 +34,7 @@ class TestView(TestCase):
         self.post_001.tags.add(self.tag_hello)
 
         self.post_002 = Post.objects.create(
+            id = 2,
             title='두 번째 포스팅입니다.',
             content='1등이 전부는 아니잖아요?',
             category=self.category_IU,
@@ -38,6 +42,7 @@ class TestView(TestCase):
         )
         
         self.post_003 = Post.objects.create(
+            id = 3,
             title='세 번째 포스트입니다.',
             content='category가 없을 수도 있죠',
             author=self.user_test02
@@ -96,9 +101,12 @@ class TestView(TestCase):
         self.category_card_test(soup)
         
         main_area = soup.find('div', id='main-area')
+
         self.assertNotIn('아직 게시물이 없습니다.', main_area.text)
         
-        post_001_card = main_area.find('div', id='post-1')
+        post_001_card = main_area.find('div', id='post-1')   # p.355
+        print("111111111111111", self.post_001.title, post_001_card)
+
         self.assertIn(self.post_001.title, post_001_card.text)
         self.assertIn(self.post_001.category.name, post_001_card.text)
         self.assertIn(self.post_001.author.username.upper(), post_001_card.text)        
@@ -134,9 +142,11 @@ class TestView(TestCase):
         
 
         
-    def test_post_detail(self):         # p.259
+    def test_post_detail(self):         # p.259, 333
 
+        # print(self.post_001.get_absolute_url())
         self.assertEqual(self.post_001.get_absolute_url(), '/blog/1/')
+        # print(object, "11111")
         
         response = self.client.get(self.post_001.get_absolute_url())
         self.assertEqual(response.status_code, 200)
@@ -208,14 +218,20 @@ class TestView(TestCase):
                 'tags_str': 'new tag; 한글 태그, python'
             }
         )
+        
+        print("ffffffffffffffffff", Post.objects.get(title="Post Form 만들기"))
+        print("ffffffffffffffffffaaaaaaaa", Tag.objects.get(name="newtag"))
+        
         self.assertEqual(Post.objects.count(), 4)
         last_post = Post.objects.last()
         self.assertEqual(last_post.title, "Post Form 만들기")
         self.assertEqual(last_post.author.username, 'test02')
 
         self.assertEqual(last_post.tags.count(), 3)
-        self.assertTrue(Tag.objects.get(name='new tag'))
-        self.assertTrue(Tag.objects.get(name='한글 태그'))
+        
+        print("3333333333333", Tag.objects.get(name="newtag"))
+        self.assertTrue(Tag.objects.get(name='한글태그'))
+        self.assertTrue(Tag.objects.get(name='python'))
         self.assertEqual(Tag.objects.count(), 5)
 
 
@@ -248,12 +264,17 @@ class TestView(TestCase):
         main_area = soup.find('div', id='main-area')
         self.assertIn('Edit Post', main_area.text)
         
+        tag_str_input = main_area.find('input', id='id_tags_str')
+        self.assertTrue(tag_str_input)
+        self.assertIn('파이썬 공부; python', tag_str_input.attrs['value'])
+        
         response = self.client.post(
             update_post_url,
             {
                 'title': '세 번째 포스트를 수정했습니다. ',
                 'content': '안녕 세계? 우리는 하나!',
-                'category': self.category_IU.pk
+                'category': self.category_IU.pk,
+                'tags_str': '파이썬 공부, 한글 태그, some tag'
             },
             follow=True
         )
@@ -262,6 +283,10 @@ class TestView(TestCase):
         self.assertIn('세 번째 포스트를 수정했습니다.', main_area.text)
         self.assertIn('안녕 세계? 우리는 하나!', main_area.text)
         self.assertIn(self.category_IU.name, main_area.text)
+        self.assertIn('파이썬공부', main_area.text)
+        self.assertIn('한글태그', main_area.text)
+        self.assertIn('sometag', main_area.text)
+        self.assertNotIn('python', main_area.text)
 
 
 
