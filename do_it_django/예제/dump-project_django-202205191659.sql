@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$320000$bOZCch5scuvxdBOA88DYn5$ZBtPZzuv0dfA9R5M93jg+xvXPTlQTBl+ZgjddHwmS1Q=','2022-05-18 17:46:16.187332',1,'song','','','erekude@naver.com',1,1,'2022-05-18 17:45:51.657999');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$320000$KV8y6K8NwiwgZGNGaHAO7F$ORhyp2okeYc6X4HYKp+vdMI01s5NdxKzMD6h60t+u8o=','2022-05-19 11:16:02.072326',1,'song','','','erekude@naver.coer.com',1,1,'2022-05-19 11:15:44.148579');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +234,7 @@ CREATE TABLE `blog_post` (
   KEY `blog_post_category_id_c326dbf8_fk_blog_category_id` (`category_id`),
   CONSTRAINT `blog_post_author_id_dd7a8485_fk_auth_user_id` FOREIGN KEY (`author_id`) REFERENCES `auth_user` (`id`),
   CONSTRAINT `blog_post_category_id_c326dbf8_fk_blog_category_id` FOREIGN KEY (`category_id`) REFERENCES `blog_category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +243,7 @@ CREATE TABLE `blog_post` (
 
 LOCK TABLES `blog_post` WRITE;
 /*!40000 ALTER TABLE `blog_post` DISABLE KEYS */;
-INSERT INTO `blog_post` VALUES (1,'test01','01','0101','','','2022-05-18 17:46:51.755180','2022-05-18 17:46:51.755197',1,NULL),(2,'test02','02','0202','','','2022-05-18 17:47:08.471489','2022-05-18 17:47:08.471506',1,NULL),(3,'test02','02','0202','','','2022-05-18 17:52:04.427018','2022-05-18 17:52:04.427071',1,NULL),(4,'dfsdf','dfsdf','sdfsdf','','','2022-05-18 18:20:02.523874','2022-05-18 18:20:02.523945',1,NULL),(5,'sdfsdf','dfggdfg','dfdsf','','','2022-05-18 18:20:18.543814','2022-05-18 18:20:18.543868',1,NULL),(6,'sdfsdf','dfggdfg','dfdsf','','','2022-05-18 18:22:17.317329','2022-05-18 18:22:17.317358',1,NULL),(7,'ffdf','fdfdf','dfdfdf','','','2022-05-18 18:22:27.213636','2022-05-18 18:22:27.213669',1,NULL),(8,'ffdf','fdfdf','dfdfdf','','','2022-05-18 18:24:11.822497','2022-05-18 18:24:11.822528',1,NULL),(9,'cccc','c','cccc','','','2022-05-18 18:24:20.539866','2022-05-18 18:24:20.539941',1,NULL),(10,'ggg','gg','ggg','','','2022-05-18 18:24:35.942655','2022-05-18 18:24:35.942686',1,NULL),(11,'eeee','ee','eeee','','','2022-05-18 18:24:51.753218','2022-05-18 18:24:51.753243',1,NULL),(12,'hhh','hh','hhh','','','2022-05-18 18:25:02.974008','2022-05-18 18:25:02.974030',1,NULL),(13,'hhh','hh','hhh','','','2022-05-18 18:25:38.569735','2022-05-18 18:25:38.569754',1,NULL),(14,'hhh','hh','hhh','','','2022-05-18 18:25:43.715554','2022-05-18 18:25:43.715599',1,NULL),(15,'aaaa','aaa','aaa','','','2022-05-18 18:26:29.645712','2022-05-18 18:26:29.645754',1,NULL),(16,'ccc','ccc','ccc','','','2022-05-18 18:27:55.027437','2022-05-18 18:27:55.027494',1,NULL),(17,'cccc','cc','ccccc','','','2022-05-18 18:32:47.048418','2022-05-18 18:32:47.048461',1,NULL),(18,'cccc','cc','ccccc','','','2022-05-18 18:33:13.852232','2022-05-18 18:33:13.852301',1,NULL),(19,'ggg','ggg','ggg','','','2022-05-18 18:33:23.601448','2022-05-18 18:33:23.601487',1,NULL),(20,'ggg','ggg','ggg','','','2022-05-18 18:40:33.924734','2022-05-18 18:40:33.924768',1,NULL),(21,'cccc','cc','edddd','','','2022-05-18 18:40:48.332964','2022-05-18 18:40:48.333006',1,NULL),(22,'cccc','cc','edddd','','','2022-05-18 18:44:30.977092','2022-05-18 18:44:30.977123',1,NULL),(23,'aaa','aa','aaaa','','','2022-05-18 18:45:21.841345','2022-05-18 18:45:21.841387',1,NULL),(24,'ccc','ccc','ccc','','','2022-05-18 18:45:39.863912','2022-05-18 18:45:39.863956',1,NULL),(25,'aaa','aa','aaaa','','','2022-05-18 18:47:13.247102','2022-05-18 18:47:13.247174',1,NULL),(26,'ddd','dd','dddd','','','2022-05-18 18:47:42.184415','2022-05-18 18:47:42.184472',1,NULL),(27,'ggg','gg','gggg','','','2022-05-18 18:47:54.898103','2022-05-18 18:47:54.898157',1,NULL),(28,'태그 테스트','확인해보자','글쓰는곳','','','2022-05-18 18:54:40.805102','2022-05-18 18:54:40.805175',1,NULL),(29,'여러개 해보자','태그확인','여러개 씁니다','','','2022-05-18 18:55:51.848757','2022-05-18 18:55:51.848775',1,NULL),(30,'한번더 확인','자세히','앞에꺼는 쉼표를 안찍음.\r\n마지막에 쉼표를 찍어보겠음.','','','2022-05-18 18:56:38.021180','2022-05-18 18:56:38.021251',1,NULL);
+INSERT INTO `blog_post` VALUES (1,'첫 포스트 입니다','태그','태그를 확인하세요','','','2022-05-19 11:16:24.528810','2022-05-19 11:16:24.528840',1,NULL),(2,'두번째 포스트 입니다.','ㅇㅇㅇ','될까...','','','2022-05-19 11:16:55.110331','2022-05-19 11:16:55.110354',1,NULL),(3,'3번째 포스트 입니다.','과연??','음...??\r\n일단 중복은 바로 넘어가지고\r\n뒤에 쉼표를 제거 함으로써 이제 공백은 생겨나지 않습니다.','','','2022-05-19 11:18:09.824494','2022-05-19 11:18:09.824521',1,NULL),(4,'ㄹㄹㄹ','ㅇㅇㅇ','ㄴㄴㄴ','','','2022-05-19 11:19:11.856559','2022-05-19 14:04:13.996850',1,NULL),(5,'끝자리 쉼표 두개 확인해보자','쉼표두개 찍기','태그, 태그, 태그, 태그,,\r\n\r\n예상 - 최 우측 쉼표 하나 삭제 하고 하나 남았기 때문에\r\n그로인하여 오른쪽 (공백태그)가 생길까 하는 의문,','','','2022-05-19 14:05:38.092538','2022-05-19 14:05:38.092600',1,NULL),(6,'쉼표 두개 다 없애주는데?? 뭐지??','쉼표테스트','뭐지 이런건가 원래 신기하니까\r\n3개 찍어봅니다.\r\n태그, 태그, 태그, 태그,,,\r\n이렇게','','','2022-05-19 14:07:01.592736','2022-05-19 14:07:01.592793',1,NULL);
 /*!40000 ALTER TABLE `blog_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +263,7 @@ CREATE TABLE `blog_post_tags` (
   KEY `blog_post_tags_tag_id_0875c551_fk_blog_tag_id` (`tag_id`),
   CONSTRAINT `blog_post_tags_post_id_a1c71c8a_fk_blog_post_id` FOREIGN KEY (`post_id`) REFERENCES `blog_post` (`id`),
   CONSTRAINT `blog_post_tags_tag_id_0875c551_fk_blog_tag_id` FOREIGN KEY (`tag_id`) REFERENCES `blog_tag` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +272,7 @@ CREATE TABLE `blog_post_tags` (
 
 LOCK TABLES `blog_post_tags` WRITE;
 /*!40000 ALTER TABLE `blog_post_tags` DISABLE KEYS */;
-INSERT INTO `blog_post_tags` VALUES (1,1,1),(15,26,35),(16,27,36),(17,28,37),(18,29,38),(19,29,39),(20,29,40),(21,29,41),(22,30,42),(23,30,43),(24,30,44),(25,30,45);
+INSERT INTO `blog_post_tags` VALUES (1,1,1),(2,1,2),(3,2,1),(4,2,2),(5,2,3),(6,3,4),(7,3,5),(8,3,6),(9,3,7),(14,4,4),(15,4,7),(16,4,8),(17,4,9),(18,5,10),(19,5,11),(20,5,12),(21,5,13),(22,6,14),(23,6,15),(24,6,16);
 /*!40000 ALTER TABLE `blog_post_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,7 +289,7 @@ CREATE TABLE `blog_tag` (
   `slug` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -298,7 +298,7 @@ CREATE TABLE `blog_tag` (
 
 LOCK TABLES `blog_tag` WRITE;
 /*!40000 ALTER TABLE `blog_tag` DISABLE KEYS */;
-INSERT INTO `blog_tag` VALUES (1,'한글','한글'),(35,'dddd','dddd'),(36,'gggggg','gggggg'),(37,'가나다라','가나다라'),(38,'고양이','고양이'),(39,'강아지','강아지'),(40,'멍멍이','멍멍이'),(41,'PC방','pc방'),(42,'가','가'),(43,'나','나'),(44,'다','다'),(45,'라','라');
+INSERT INTO `blog_tag` VALUES (1,'블루','블루'),(2,'파랑','파랑'),(3,'파랑새','파랑새'),(4,'고양이','고양이'),(5,'강아지','강아지'),(6,'멍멍이','멍멍이'),(7,'토끼','토끼'),(8,'개','개'),(9,'멍뭉이','멍뭉이'),(10,'갈치','갈치'),(11,'고등어','고등어'),(12,'연어','연어'),(13,'고래','고래'),(14,'제주도','제주도'),(15,'한라산','한라산'),(16,'블랙스톤','블랙스톤');
 /*!40000 ALTER TABLE `blog_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -384,7 +384,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2022-05-18 17:45:22.984031'),(2,'auth','0001_initial','2022-05-18 17:45:23.678409'),(3,'admin','0001_initial','2022-05-18 17:45:23.842325'),(4,'admin','0002_logentry_remove_auto_add','2022-05-18 17:45:23.870538'),(5,'admin','0003_logentry_add_action_flag_choices','2022-05-18 17:45:23.889816'),(6,'contenttypes','0002_remove_content_type_name','2022-05-18 17:45:23.954920'),(7,'auth','0002_alter_permission_name_max_length','2022-05-18 17:45:24.004850'),(8,'auth','0003_alter_user_email_max_length','2022-05-18 17:45:24.033329'),(9,'auth','0004_alter_user_username_opts','2022-05-18 17:45:24.042808'),(10,'auth','0005_alter_user_last_login_null','2022-05-18 17:45:24.086790'),(11,'auth','0006_require_contenttypes_0002','2022-05-18 17:45:24.090521'),(12,'auth','0007_alter_validators_add_error_messages','2022-05-18 17:45:24.099899'),(13,'auth','0008_alter_user_username_max_length','2022-05-18 17:45:24.150839'),(14,'auth','0009_alter_user_last_name_max_length','2022-05-18 17:45:24.200017'),(15,'auth','0010_alter_group_name_max_length','2022-05-18 17:45:24.227271'),(16,'auth','0011_update_proxy_permissions','2022-05-18 17:45:24.251014'),(17,'auth','0012_alter_user_first_name_max_length','2022-05-18 17:45:24.306062'),(18,'blog','0001_initial','2022-05-18 17:45:24.706792'),(19,'sessions','0001_initial','2022-05-18 17:45:24.773160');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2022-05-19 11:15:06.031474'),(2,'auth','0001_initial','2022-05-19 11:15:06.694776'),(3,'admin','0001_initial','2022-05-19 11:15:06.860911'),(4,'admin','0002_logentry_remove_auto_add','2022-05-19 11:15:06.888711'),(5,'admin','0003_logentry_add_action_flag_choices','2022-05-19 11:15:06.904309'),(6,'contenttypes','0002_remove_content_type_name','2022-05-19 11:15:06.977856'),(7,'auth','0002_alter_permission_name_max_length','2022-05-19 11:15:07.028450'),(8,'auth','0003_alter_user_email_max_length','2022-05-19 11:15:07.052426'),(9,'auth','0004_alter_user_username_opts','2022-05-19 11:15:07.061455'),(10,'auth','0005_alter_user_last_login_null','2022-05-19 11:15:07.104499'),(11,'auth','0006_require_contenttypes_0002','2022-05-19 11:15:07.108994'),(12,'auth','0007_alter_validators_add_error_messages','2022-05-19 11:15:07.118226'),(13,'auth','0008_alter_user_username_max_length','2022-05-19 11:15:07.170593'),(14,'auth','0009_alter_user_last_name_max_length','2022-05-19 11:15:07.219537'),(15,'auth','0010_alter_group_name_max_length','2022-05-19 11:15:07.245150'),(16,'auth','0011_update_proxy_permissions','2022-05-19 11:15:07.255173'),(17,'auth','0012_alter_user_first_name_max_length','2022-05-19 11:15:07.308393'),(18,'blog','0001_initial','2022-05-19 11:15:07.718870'),(19,'sessions','0001_initial','2022-05-19 11:15:07.771453');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -410,7 +410,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('n6jzvt2d707ba6c24nhcs7wbr6fxnx2g','.eJxVjDsOgzAQRO_iOrJ21zKGlOlzBmvXn5gkMhKGCuXuAYkimXLem9mU53Upfm1p9mNUV4Xq8tsJh1eqB4hPro9Jh6ku8yj6UPRJm75PMb1vp_t3ULiVfQ1WpEdL4JIxdg9BJhMCgCE2DjMS5giEfXIoXRTOnQXOMMhgUmD1-QKwgDdD:1nrFJw:fn3uAgGR4ZdL_Frs4DFy4GN_ANZANGuucLz1tazExog','2022-06-01 17:46:16.190874');
+INSERT INTO `django_session` VALUES ('qut85qbtlt7axz3psuadd41b53au1yh0','.eJxVjEEOgjAQRe_StWkYCu3UpXvP0AwzU4saSCisjHdXEha6_e-9_zKJtrWkreqSRjFnA-b0uw3ED512IHeabrPleVqXcbC7Yg9a7XUWfV4O9--gUC3fGjU37DqKPXgAcZydxoZFQs8Z0QckhCwtkmYH0QO36LITVIkhdGjeH-x5N_c:1nrVhq:ACjwHF8GOhxmn9BE3_BCREEhfLTnK2dYiU2k0rEVRHA','2022-06-02 11:16:02.075824');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -427,4 +427,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-18 19:06:44
+-- Dump completed on 2022-05-19 16:59:20
