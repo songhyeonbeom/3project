@@ -24,17 +24,18 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             
             tags_str = self.request.POST.get('tags_str')
             if tags_str:
-                tags_str = tags_str.replace(" ", "")
-                tags_str = tags_str.rstrip(',')
-                tags_str = tags_str.replace(',', ';')
-                tags_list = tags_str.split(';')
-                
+                tags_str = tags_str.replace(" ", "")    #태그 인풋 창에 넣은거 싹다 앞뒤공백 보내버리기~
+                tags_str = tags_str.rstrip(',')         #알스트립 - 우측에 쉼표 보내버리기~
+                tags_str = tags_str.replace(',', ';')   #쉼표는 콜론으로 바꾼당
+                tags_list = tags_str.split(';')         #태그는 콜론으로 구분한당
+                                                        #고로 앞의 공백자체가 아에 나오지 않는다. 행복하다 개그튼 유니크공백 하... 저 한줄이 뭐라고 빡치게 만든다
+                                                        #개발자의 길은 멀고도 험하구나....
                 print(tags_list)
                 for t in tags_list:
                     t = t.strip()
                     print(t)
-                    tag, is_tag_created = Tag.objects.get_or_create(name=t)
                     
+                    tag, is_tag_created = Tag.objects.get_or_create(name=t)
                     print(tag, is_tag_created)
                         
                     if is_tag_created:
