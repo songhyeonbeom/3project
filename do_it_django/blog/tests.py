@@ -2,7 +2,7 @@ from pdb import post_mortem
 from django.test import TestCase, Client
 from bs4 import BeautifulSoup
 from django.contrib.auth.models import User
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, Comment
 
 
 
@@ -49,6 +49,13 @@ class TestView(TestCase):
         )
         self.post_003.tags.add(self.tag_python_kor)
         self.post_003.tags.add(self.tag_python)
+        
+        self.comment_001 = Comment.objects.create(
+            id = 1,
+            post=self.post_001,
+            author=self.user_test01,
+            content='첫 번째 댓글입니다. '
+        )
         
     def test_tag_page(self):
         response = self.client.get(self.tag_hello.get_absolute_url())
@@ -168,6 +175,15 @@ class TestView(TestCase):
         self.assertIn(self.tag_hello.name, post_area.text)
         self.assertNotIn(self.tag_python.name, post_area.text)
         self.assertNotIn(self.tag_python_kor.name, post_area.text)
+        
+        # comment area
+        comments_area = soup.find('div', id='comment-area')
+        comment_001_area = comments_area.find('div', id='comment-1')
+        print("5555555556666666666", comment_001_area, comments_area)
+        self.assertIn(self.comment_001.author.username, comment_001_area.text)
+        print("777777777778888888888", comment_001_area, comments_area)
+        self.assertIn(self.comment_001.content, comment_001_area.text)
+        print("999999990000000000", comment_001_area, comments_area)
         
 
     def test_category_page(self):
