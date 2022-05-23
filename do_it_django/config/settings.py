@@ -152,8 +152,25 @@ AUTHENTICATION_BACKENDS = (
     
 )
 
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a SocialApp
+        # (socialaccount app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '296024127664-43br420usk0euh739p6spnk9k5bh2gnd.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
+
 SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 LOGIN_REDIRECT_URL = '/blog/'
+
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
