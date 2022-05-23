@@ -1,5 +1,5 @@
 body {
-    background: url('git/3project/do_it_django/static/single_pages/images/고스트_블랙뱃지.jpg') no-repeat center center fixed;
+    background: url('/static/single_pages/images/고스트_블랙뱃지.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
