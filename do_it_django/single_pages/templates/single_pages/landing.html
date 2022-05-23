@@ -1,20 +1,29 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>달타냥이 왜나오냥</title>
+    <title> Do It Django </title>
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <script src="https://kit.fontawesome.com/da37861531.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav>
-        <a href="/blog/">Blog</a>
-        <a href="/about_me/">About me</a>
-    </nav>
+    {% include 'blog/navbar.html' %}
+    <h1> 안녕하세요 VERI 입니다. </h1>
+    <h2> 대문페이지 </h2>
+    <h3> 아직 엄서영 </h3>
 
-    <h1>안녕 난 달타냥?</h1>
-    <h2>대문페이지라는디</h2>
-    <h3>아직 만들지 않았지라</h3>
+    {% include 'blog/footer.html' %}
 
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+    crossorigin="anonymous"></script>
 
 </body>
 </html>

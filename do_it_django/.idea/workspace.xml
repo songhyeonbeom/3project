@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff99fddf-294e-4d6c-b99d-01ca319c5958" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about_me.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/add_two_numbers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/고스트_블랙뱃지.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/레드아벤.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/보나01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/아이유01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/아이유03.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/엠블럼.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/우라칸_미노타우루스.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/what_time_is_it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/디장고 책갈피" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../onetoonefield★/templates/insta/album.html" beforeDir="false" afterPath="$PROJECT_DIR$/../onetoonefield★/templates/insta/album.html" afterDir="false" />
-    </list>
+    <list default="true" id="ff99fddf-294e-4d6c-b99d-01ca319c5958" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +44,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../python_django/project_insta" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
