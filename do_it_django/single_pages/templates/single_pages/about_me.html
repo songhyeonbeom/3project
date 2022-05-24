@@ -1,21 +1,197 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>여기는 달타냥 2라는디</title>
+    <title> About VERITAS </title>
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'single_pages/css/about_me.css' %}" media="screen">
+
+    <script src="https://kit.fontawesome.com/da37861531.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav>
-        <a href="/blog/">Blog</a>
-        <a href="/about_me/">About me</a>
-    </nav>
+    {% include 'blog/navbar.html' %}
 
-    <h1>안녕하세요 달타냥이랍니다.</h1>
-    <h2>이력서</h2>
-    <h2>Portfolio</h2>
-    <h3>아직 공사중입니다.</h3>
+    <section>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1> 방가방가 I'm VERITAS </h1>
+                    <br/>
+                    <p class="lead">
+                        태권도, 스케이트, 피아노, 수영, 미술 기타등등 많이 배웠습니다.<br/>
+                        지금은 컴퓨터 학원을 다니고 있습니다. 취업해야죠!
+                    </p>
+
+                    <ul>
+                        <li>work experience</li>
+                        <ul>
+                            <li>1번 경력~~</li>
+                            <li>2번 경력~~</li>
+                        </ul>
+                        <li>Education</li>
+                        <ul>
+                            <li>3번 경력~~</li>
+                            <li>4번 경력~~</li>
+                            <li>5번 경력~~</li>
+                        </ul>
+                        <li>퍼블리스</li>
+                        <ul>
+                            <li>6번 경력~~</li>
+                            <li>7번 경력~~</li>
+                            <li>8번 경력~~</li>
+                        </ul>
+                    </ul>
+
+                    </div>
+                <div class="col-lg-4">
+                    <img class="img-fluid" src="{% static 'single_pages/images/엠블럼.jpg' %}">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light margin-for-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>PORTFOLIO</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#supercar_01">
+                        <img class="card-img-top" src="{% static 'single_pages/images/마이바흐_04.png' %}">
+                        <div class="card-body">
+                            <h5 class="card-title">벤츠 마이바흐</h5>
+                            <p> 650S 풀만 </p>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#supercar_02">
+                        <img class="card-img-top" src="{% static 'single_pages/images/플라잉스퍼_12.png' %}">
+                        <div class="card-body">
+                            <h5 class="card-title">벤틀리 플라잉스퍼</h5>
+                            <p> 세로그릴 신형 </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#supercar_03">
+                        <img class="card-img-top" src="{% static 'single_pages/images/고스트_블랙뱃지.jpg' %}">
+                        <div class="card-body">
+                            <h5 class="card-title">롤스로이스 고스트</h5>
+                            <p> 신형 풀체인지 </p>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </section>
 
 
+    
+<!-- Modal -->
+<div class="modal fade" id="supercar_01" tabindex="-1" role="dialog" aria-labelledby="supercar_01ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="supercar_01ModalLabel">1번 게시물 모달 제목부분</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <img class="img-fluid" src="{% static 'single_pages/images/마이바흐_04.png' %}">
+                    </div>
+                    <div class="col-lg-5">
+                        <p>1번 게시물 모달 내용 부분</p>
+                        <button type="button" class="btn btn-light"><i class="fa-brands fa-youtube"></i> 유튜브</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="supercar_02" tabindex="-1" role="dialog" aria-labelledby="supercar_01ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="supercar_02ModalLabel">제목2번</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <img class="img-fluid" src="{% static 'single_pages/images/플라잉스퍼_12.png' %}">
+                    </div>
+                    <div class="col-lg-5">
+                        <p>2번 게시물 내용 모달</p>
+                        <button type="button" class="btn btn-light"><i class="fa-brands fa-instagram"></i> 인스타그램</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+<div class="modal fade" id="supercar_03" tabindex="-1" role="dialog" aria-labelledby="supercar_01ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="supercar_03ModalLabel">3번 게시물 제목이여</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <img class="img-fluid" src="{% static 'single_pages/images/고스트_블랙뱃지.jpg' %}">
+                    </div>
+                    <div class="col-lg-5">
+                        <p>3번 게시물 모달 내용 부분입니다.</p>
+                        <button type="button" class="btn btn-light"><i class="fa-brands fa-facebook"></i> 페이스북</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-bottom">
+    {% include 'blog/footer.html' %}
+</div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+    crossorigin="anonymous"></script>
 
 </body>
 </html>
