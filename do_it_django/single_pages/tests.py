@@ -35,7 +35,7 @@ class TestView(TestCase):
         )
 
         response = self.client.get('')
-        self.assertEqual(restponse.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         soup = BeautifulSoup(response.content, 'html.parser')
         
         body = soup.body
