@@ -15,6 +15,10 @@
  sudo docker-compose up --build
  이미지 빌드를 하고 실행을 한번에 명령어.
  
+ 방문자는 오류메세지를 볼수 없게 해야한다.
+ 개발용/ 배포용 docker-compose 파일 구분해야 됌
+ 개발용 docker-compose.dev.yml 실행하는 명령어
+ sudo docker-compose -f docker-compose.dev.yml up
  
  
  
