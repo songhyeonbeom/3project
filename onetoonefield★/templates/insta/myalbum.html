@@ -12,45 +12,26 @@ See Our Photos Collection - PLATE-STUDIO
 
 
 <br>
-<div>
-    <h1 class="text-center my_title">BLACKVERI_0</h1>
-    <br>
-    <p class = "text-center">포토앨범 <br>사진을 등록해보세요</p>
-</div>
+
 
 <section>
     <div class="container mt-4">
-        <div class="row">
-            <div class="col-lg-8">
-                <h1> 방가방가 I'm VERITAS </h1>
+        <div class="row mx-auto">
+
+            <div class="col-8 col-sm-8 col-md-8 col-lg-8">
+                <h1> VERITAS (ID) </h1>
                 <br/>
+                <li>이름 username</li>
+                <li>slug</li>
+                <li>웹 사이트 주소 홍보</li>
                 <p class="lead">
-                    태권도, 스케이트, 피아노, 수영, 미술 기타등등 많이 배웠습니다.<br/>
-                    지금은 컴퓨터 학원을 다니고 있습니다. 취업해야죠!
+                    자기소개 란 입니다.<br/>
+                    텍스트 적는곳 길이를 지정합시다.
                 </p>
 
-                <ul>
-                    <li>work experience</li>
-                    <ul>
-                        <li>1번 경력~~</li>
-                        <li>2번 경력~~</li>
-                    </ul>
-                    <li>Education</li>
-                    <ul>
-                        <li>3번 경력~~</li>
-                        <li>4번 경력~~</li>
-                        <li>5번 경력~~</li>
-                    </ul>
-                    <li>퍼블리스</li>
-                    <ul>
-                        <li>6번 경력~~</li>
-                        <li>7번 경력~~</li>
-                        <li>8번 경력~~</li>
-                    </ul>
-                </ul>
+            </div>
 
-                </div>
-            <div class="col-lg-4">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
                 <img class="img-fluid" src="/PT/엠블럼.jpg">
             </div>
         </div>
@@ -58,15 +39,15 @@ See Our Photos Collection - PLATE-STUDIO
 </section>
 
 
-<br><br>
-<div class="container">
+<br><br><br><br><br>
+<div class="container" style="center margin: 0px; padding: 0px">
     <div class="row mx-auto">
 
 
 
         {% for photo in photos.object_list %}
-        <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">
-            <div class="thumbnail" style="width: 100%; margin-bottom: 9%;">
+        <div class="my_bottom_margin col-4 col-sm-4 col-md-4 col-lg-4" style="margin: 0px; padding: 0px">
+            <div class="thumbnail" style="width: 100%; margin-bottom: 0%;">
                 <a href="{{ photo.get_absolute_url }}">
                     <img src="{{ photo.image.thumb_url }}" style="width: 100%;">
                 </a>

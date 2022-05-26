@@ -18,15 +18,15 @@ See Our Photos Collection - PLATE-STUDIO
     <p class = "text-center">포토앨범 <br>사진을 등록해보세요</p>
 </div>
 <br><br>
-<div class="container">
+<div class="container" style="center margin: 0px; padding: 0px">
     <div class="row mx-auto">
 
 
 
         {% for photo in photos.object_list %}
-        <div class="my_bottom_margin col-9 col-sm-6 col-md-4 col-lg-4">
+        <div class="my_bottom_margin col-4 col-sm-4 col-md-4 col-lg-4" style="margin: 0px; padding: 0px">
 
-                <div class="thumbnail" style="width: 100%; margin-bottom: 9%;">
+                <div class="thumbnail" style="width: 100%;">
                     <a href="{{ photo.get_absolute_url }}">
                         <img src="{{ photo.image.thumb_url }}" style="width: 100%;">
                     </a>

@@ -7,7 +7,7 @@ from common.models import User
 class Album(models.Model):
     object = None
     name = models.CharField('NAME', max_length=30)
-    slug = models.SlugField(max_length=50, unique=True)
+    slug = models.SlugField(max_length=50, unique=True, allow_unicode=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
 
     class Meta:
@@ -34,12 +34,17 @@ class Photo(models.Model):
     class Meta:
         ordering = ('title',)
 
+    # def __str__(self):
+    #     return '{}'.format(self.image.name)
+
+    # def get_absolute_url(self):
+    #     return reverse('insta:photo_detail', args = [self.id])
+
     def __str__(self):
-        return '{}'.format(self.image.name)
+        return f'[{self.pk}]{self.title}'
 
     def get_absolute_url(self):
-        return reverse('insta:photo_detail', args = [self.id])
-
+        return f'/insta/{self.pk}/'
 
 class Answer(models.Model):
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
@@ -50,4 +55,12 @@ class Answer(models.Model):
     voter = models.ManyToManyField(User, related_name='voter_answer')
 
 
-
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+    
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return f'/insta/tag/{self.slug}/'
