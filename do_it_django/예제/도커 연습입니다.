@@ -11,7 +11,8 @@
  
  sudo docker-compose up
  컨테이너 실행
- 
+ 192.???.??.??:8000 주소를 입력해야 나온다.
+
  sudo docker-compose up --build
  이미지 빌드를 하고 실행을 한번에 명령어.
  

@@ -3,6 +3,15 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'insta:allPhotoAB' %}">오늘의 PHOTO</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'insta:myPhotoAB' %}">나의사진들</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a href="{% url 'insta:photo_add' %}" class="btn btn-primary">PHOTO +</a>
+       </li>
     </ul>
 
     {% for cat in links %}
@@ -17,11 +26,3 @@
     {% endif %}
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'insta:myPhotoAB' %}">나의사진들</a>
-        </li>
-    </ul>
-    <a href="{% url 'insta:photo_add' %}" class="btn btn-primary">PHOTO +</a>
-</nav>
