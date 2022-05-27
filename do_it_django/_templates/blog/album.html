@@ -4,13 +4,7 @@
 
 
 
-<br>
-<div>
-    <h1 class="text-center my_title">BLACKVERI_0</h1>
-    <br>
-    <p class = "text-center">포토앨범</p>
-</div>
-<br><br>
+
 <div class="container">
     <div class="row mx-auto">
 
@@ -18,11 +12,13 @@
         {% for post in posts.object_list %}
         <div class="my_bottom_margin col-4 col-sm-4 col-md-4 col-lg-4" style="margin: 0px; padding: 0px">
 
-                <div class="thumbnail" style="width: 100%;">
+                <!-- <div class="thumbnail" style="width: 100%;"> -->
                     <a href="{{ post.get_absolute_url }}">
                         <img src="{{ post.head_image_url }}" style="width: 100%;">
+                        <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }} head_image">
+
                     </a>
-                </div>
+                <!-- </div> -->
         </div>
         {% endfor %}
 
