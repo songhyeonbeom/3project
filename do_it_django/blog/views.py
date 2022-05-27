@@ -7,6 +7,8 @@ from .forms import CommentForm
 from django.core.exceptions import PermissionDenied
 from django.utils.text import slugify
 from django.db.models import Q
+from django.core.paginator import EmptyPage, InvalidPage, Paginator
+
 # from django.shortcuts import render
 # Create your views here.
 
@@ -230,3 +232,24 @@ class PostSearch(PostList):
 
 
 
+def allphoto(request, c_slug=None):
+    c_page = None
+    posts_list = None
+    if c_slug != None:
+        c_page = get_object_or_404(Category, slug = c_slug)
+        posts_list = Post.objects.filter(category = c_page).order_by('-created_at')
+    else:
+        posts_list = Post.objects.order_by('-created_at')
+    paginator = Paginator(posts_list, 12)
+
+    try:
+        page = int(request.GET.get('page', 1))
+    except:
+        page = 1
+    try:
+        posts = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        posts = paginator.page(paginator.num_pages)
+
+    print('7777777777777777777')
+    return render(request, 'blog/album.html', {'category':c_page, 'posts':posts})

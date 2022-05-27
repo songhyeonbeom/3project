@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from blog import views
 
 
 
@@ -26,6 +27,8 @@ urlpatterns = [
     path('markdownx/', include('markdownx.urls')),
     path('accounts/', include('allauth.urls')),
     path('', include('single_pages.urls')),
+    path('allphoto/', views.allphoto, name='allphoto'),
+
 ]
 
 

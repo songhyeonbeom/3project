@@ -1,7 +1,10 @@
 from django.urls import path
-from . import views
+from blog import views
 
+
+app_name = 'blog'
 urlpatterns = [
+    
     path('search/<str:q>/', views.PostSearch.as_view()),
     path('delete_comment/<int:pk>/', views.delete_comment),
     path('delete_comment/<int:pk>/', views.delete_comment),
@@ -15,6 +18,7 @@ urlpatterns = [
     path('', views.PostList.as_view()),
     # path('', views.index),
     # path('<int:pk>/', views.single_post_page),
+
 ]
 
 

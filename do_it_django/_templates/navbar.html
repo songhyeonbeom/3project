@@ -1,12 +1,12 @@
 {% load socialaccount %}
 
-<nav class="navbar navbar-expand navbar-light bg-light">
+<nav class="navbar navbar-expand navbar-light bg-light fixed-top">
         <a class="navbar-brand" href="/">VERITAS</a>
 
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="/allphoto/">
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
@@ -17,11 +17,14 @@
                     </a>
                 </li>
 
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="/about_me/">
                         <i class="fa fa-star"></i>
                     </a>
                 </li>
+                {% endif %}
+
 
                 {% if user.is_authenticated %}
                     {% if user.is_superuser or user.is_staff %}
@@ -34,6 +37,7 @@
             </ul>
 
             <ul class="navbar-nav">
+
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -60,6 +64,7 @@
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
                 </li>
                 {% endif %}
+
             </ul>
 
 
