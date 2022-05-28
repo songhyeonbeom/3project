@@ -17,6 +17,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/search/">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </li>
+
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="/about_me/">
@@ -27,11 +33,9 @@
 
 
                 {% if user.is_authenticated %}
-                    {% if user.is_superuser or user.is_staff %}
-                        <a class="nav-link" href="/blog/create_post/">
-                            <i class="fa fa-plus-square-o"></i>
-                        </a>
-                    {% endif %}
+                    <a class="nav-link" href="/blog/create_post/">
+                        <i class="fa fa-plus-square-o"></i>
+                    </a>
                 {% endif %}
 
             </ul>
@@ -47,8 +51,8 @@
                             {% else %}
                             <img class="rounded-circle" width="40px" src="https://doitdjango.com/avatar/id/1013/0b6b5c1fe5cb5275/svg/{{ user.email }}">
                             {% endif %}
-                            &nbsp;
-                        {{ user.username }}
+                            <!-- &nbsp; -->
+                        <!-- {{ user.username }} -->
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 

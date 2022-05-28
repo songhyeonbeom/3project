@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
+from requests import post
 from .models import Post, Category, Tag, Comment
 from .forms import CommentForm
 from django.core.exceptions import PermissionDenied
@@ -14,16 +15,18 @@ from django.core.paginator import EmptyPage, InvalidPage, Paginator
 
 
 
-class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category']
+    fields = ['content', 'image'] 
+    # 모델에 있는 필드명을 입력하면 form 이 웹에 보여준다. 제목 훅테그 카테고리 파일업로드 다 필요없이
+    # 간단하게 사진올리는 용으로 하고싶어서 다 지우고 내용/사진/태그 만 남겨두었다.
 
-    def test_func(self):
-        return self.request.user.is_superuser or self.request.user.is_staff
+    # def test_func(self):
+    #     return self.request.user.is_superuser or self.request.user.is_staff
 
     def form_valid(self, form):
         current_user = self.request.user
-        if current_user.is_authenticated and (current_user.is_staff or current_user.is_superuser):
+        if current_user.is_authenticated :
             form.instance.author = current_user
             response = super(PostCreate, self).form_valid(form)
             
@@ -78,7 +81,7 @@ class PostDetail(DetailView):
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category', 'tags']
+    fields = ['title', 'hook_text', 'content', 'image', 'file_upload', 'category', 'tags']
 
     template_name = 'blog/post_update_form.html'
 
@@ -253,3 +256,8 @@ def allphoto(request, c_slug=None):
 
     print('7777777777777777777')
     return render(request, 'blog/album.html', {'category':c_page, 'posts':posts})
+
+
+
+
+

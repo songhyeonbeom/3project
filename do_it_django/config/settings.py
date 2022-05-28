@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'markdownx',
     'django.contrib.sites',
+    
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'single_pages.apps.SinglePagesConfig',
     
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +148,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, '_static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
@@ -175,6 +178,6 @@ SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-LOGIN_REDIRECT_URL = '/blog/'
+LOGIN_REDIRECT_URL = '/allphoto/'
 
-ACCOUNT_LOGOUT_REDIRECT = '/blog/'
+ACCOUNT_LOGOUT_REDIRECT = '/'

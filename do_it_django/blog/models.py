@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdown
 import os
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 # Create your models here.
@@ -35,11 +37,13 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=30, blank=True)
     hook_text = models.CharField(max_length=100, blank=True)
-    content = MarkdownxField()
+    content = MarkdownxField(blank=True)
     
-    head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
+    image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
+    image_thumbnail = ImageSpecField(source= 'image', processors= [ResizeToFill(162, 162)])
+    
     file_upload = models.FileField(upload_to='blog/files/%Y/%m/%d/', blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
@@ -47,7 +51,7 @@ class Post(models.Model):
     
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     
-    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)    
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     
     tags = models.ManyToManyField(Tag, blank=True)
     

@@ -18,13 +18,13 @@
 <!-- Blog Post -->
 <div class="card mb-4" id="post-{{ p.pk }}">
 
-    <div class="text-muted fst-italic mb-2">by {{ p.author | upper }}</div>
+    <div class="text-muted fst-italic mb-2">{{ p.author | upper }}</div>
 
 
     <!-- 게시물에 사용자 프로필사진과 아이디가 보였으면 좋겠다. 추가하는 중이다. -->
 
-    {% if p.head_image %}
-    <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head im-age">
+    {% if p.image %}
+    <img class="card-img-top" src="{{ p.image.url }}" alt="{{ p }} head im-age">
 
     {% else %}
     <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image">
