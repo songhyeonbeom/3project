@@ -8,7 +8,6 @@
 <div class="container" style="margin: 0px; padding: 0px;">
     <div class="row mx-auto">
 
-
         {% for post in posts.object_list %}
         <div class="col-4 col-sm-4 col-md-4 col-lg-4" style="margin: 0px; padding: 0px;">
 
@@ -22,9 +21,12 @@
             </div>
         {% endfor %}
 
-
     </div>
+
+
     <br><br>
+
+    
     <div class="mx-auto">
         {% if posts.paginator.num_pages > 1 %}
         <br>
@@ -35,6 +37,8 @@
         </div>
         {% endif %}
     </div>
+
+
     <br>
 </div>
 {% endblock %}

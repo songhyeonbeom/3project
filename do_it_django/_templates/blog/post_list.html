@@ -18,8 +18,8 @@
 <!-- Blog Post -->
 <div class="card mb-4" id="post-{{ p.pk }}">
 
-    <div class="text-muted fst-italic mb-2">{{ p.author | upper }}</div>
-
+    <div class="text-muted fst-italic mb-2"><a href="#">{{ p.author | upper }}</a></div>
+    
 
     <!-- 게시물에 사용자 프로필사진과 아이디가 보였으면 좋겠다. 추가하는 중이다. -->
 
@@ -34,16 +34,17 @@
 
     <div class="card-body">
 
-        {% if p.category %}
+        <!-- {% if p.category %}
         <span class="badge badge-secondary float-right">{{ p.category }}</span>
         {% else%}
         <span class="badge badge-secondary float-right">미분류</span>
         {% endif %}
+
         <h2 class="card-title">{{ p.title }}</h2>
 
         {% if p.hook_text %}
         <h5 class="text-muted">{{ p.hook_text }}</h5>
-        {% endif %}
+        {% endif %} -->
 
         <p class="card-text">{{ p.get_content_markdown | truncatewords_html:45 | safe }}</p>
 
@@ -58,10 +59,11 @@
 
         <a href="{{ p.get_absolute_url }}" class="btn btn-primary"><i class="fa fa-comment-o"></i></a>
     </div>
+
     <div class="card-footer text-muted">
-        Posted on {{ p.created_at }} by
-        <a href="#">{{ p.author | upper }}</a>
+        {{ p.created_at }}
     </div>
+
 </div>
 {% endfor %}
 
