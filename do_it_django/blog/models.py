@@ -42,7 +42,7 @@ class Post(models.Model):
     content = MarkdownxField(blank=True)
     
     image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
-    image_thumbnail = ImageSpecField(source= 'image', processors= [ResizeToFill(162, 162)])
+    image_thumbnail = ImageSpecField(source= 'image', processors= [ResizeToFill(380, 380)])
     
     file_upload = models.FileField(upload_to='blog/files/%Y/%m/%d/', blank=True)
     

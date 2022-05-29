@@ -1,106 +1,108 @@
 {% load socialaccount %}
 
 <nav class="navbar navbar-expand navbar-light bg-light fixed-top">
+    <div class = "container">
         <a class="navbar-brand" href="/">VERITAS</a>
 
-            <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="/allphoto/">
-                        <i class="fa fa-home"></i>
-                    </a>
-                </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/allphoto/">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/blog/">
-                        <i class="fa fa-camera-retro"></i>
-                    </a>
-                </li>
-
-
-                <li class="nav-link">
-                    <a data-toggle="modal" data-target="#searchModal">
-                    <i class="fa fa-search"></i>
-                    </a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">
+                    <i class="fa fa-camera-retro"></i>
+                </a>
+            </li>
 
 
-                <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+            <!-- 지금 만지고 있는 부분 써치/ 모달로 나오게 해서 검색 가능하게 만들기 -->
+            <li class="nav-link">
+                <a data-toggle="modal" data-target="#searchModal">
+                <i class="fa fa-search"></i>
+                </a>
+            </li>
 
-                        <div class="modal-body">
-            
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fa fa-search"></i> 
-                                    검색
-                                </div>
-                                <div class="card-body">
-                                    <div class="input-group">
-            
-                                        <input class="form-control" type="text" placeholder="Enter search term..." id="search-input">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button" onclick="searchPost();">Go!</button>
-                                        </span>
-                                    </div>
+
+            <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+
+                    <div class="modal-body">
+        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fa fa-search"></i> 
+                                검색
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group">
+        
+                                    <input class="form-control" type="text" placeholder="Enter search term..." id="search-input">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary" type="button" onclick="searchPost();">Go!</button>
+                                    </span>
                                 </div>
                             </div>
-                            
                         </div>
-            
+                        
                     </div>
+        
                 </div>
+            </div>
 
 
 
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/about_me/">
-                        <i class="fa fa-star"></i>
-                    </a>
-                </li>
-                {% endif %}
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/about_me/">
+                    <i class="fa fa-star"></i>
+                </a>
+            </li>
+            {% endif %}
 
 
-                {% if user.is_authenticated %}
-                    <a class="nav-link" href="/blog/create_post/">
-                        <i class="fa fa-plus-square-o"></i>
-                    </a>
-                {% endif %}
+            {% if user.is_authenticated %}
+                <a class="nav-link" href="/blog/create_post/">
+                    <i class="fa fa-plus-square-o"></i>
+                </a>
+            {% endif %}
 
-            </ul>
+        </ul>
 
-            <ul class="navbar-nav">
+        <ul class="navbar-nav">
 
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {% if user.socialaccount_set.all.0.get_avatar_url %}
-                            <img class="rounded-circle" width="40px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
-                            {% else %}
-                            <img class="rounded-circle" width="40px" src="https://doitdjango.com/avatar/id/1013/0b6b5c1fe5cb5275/svg/{{ user.email }}">
-                            {% endif %}
-                            <!-- &nbsp; -->
-                        <!-- {{ user.username }} -->
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% if user.socialaccount_set.all.0.get_avatar_url %}
+                        <img class="rounded-circle" width="40px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
+                        {% else %}
+                        <img class="rounded-circle" width="40px" src="https://doitdjango.com/avatar/id/1013/0b6b5c1fe5cb5275/svg/{{ user.email }}">
+                        {% endif %}
+                        <!-- &nbsp; -->
+                    <!-- {{ user.username }} -->
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
 
-                        <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
-                    </div>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
-                </li>
-                {% endif %}
+                    <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
+                </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+            </li>
+            {% endif %}
 
-            </ul>
-
+        </ul>
+    </div>
 
 </nav>
 
