@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="ko">
   <head>
     <title>{% block head_title %}{% endblock %}</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">   
-
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/blog-post.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
     <script src="https://kit.fontawesome.com/da37861531.js" crossorigin="anonymous"></script>
     {% block extra_head %}
     {% endblock %}
+
+
+
+
+
+
   </head>
   <body>
     {% include 'navbar.html' %}

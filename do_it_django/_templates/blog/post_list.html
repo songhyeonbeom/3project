@@ -16,7 +16,7 @@
 
 {% for p in post_list %}
 <!-- Blog Post -->
-<div class="card mb-4" id="post-{{ p.pk }}">
+<div class="card col-4 mb-4" id="post-{{ p.pk }}">   <!-- 임시로 col-4 를 주어 작게 만들었다 너무 커져서 보기 불편하였다. 연구해야겠다.-->
 
     <div class="text-muted fst-italic mb-2"><a href="#">{{ p.author | upper }}</a></div>
     
