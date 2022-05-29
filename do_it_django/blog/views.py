@@ -24,7 +24,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
     # def test_func(self):
     #     return self.request.user.is_superuser or self.request.user.is_staff
 
-    def form_valid(self, form):
+    def form_valid(self, form):       # p.387 슈퍼의 뜻을 모르겟다.
         current_user = self.request.user
         if current_user.is_authenticated :
             form.instance.author = current_user
@@ -243,7 +243,7 @@ def allphoto(request, c_slug=None):
         posts_list = Post.objects.filter(category = c_page).order_by('-created_at')
     else:
         posts_list = Post.objects.order_by('-created_at')
-    paginator = Paginator(posts_list, 12)
+    paginator = Paginator(posts_list, 15)
 
     try:
         page = int(request.GET.get('page', 1))
