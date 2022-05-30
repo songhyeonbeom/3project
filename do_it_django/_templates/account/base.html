@@ -35,7 +35,9 @@
     </div>
     {% endif %}
 
-    <div>
+
+    <!-- 로긴 위에 베이스에서 계속 뜨는게 거슬려서 지웠습니다. -->
+    <!-- <div>         
       <strong>Menu:</strong>
       <ul>
         {% if user.is_authenticated %}
@@ -46,7 +48,7 @@
         <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
         {% endif %}
       </ul>
-    </div>
+    </div> -->
     {% block content %}
     {% endblock %}
     {% endblock %}
@@ -68,8 +70,9 @@
       document.getElementById('search-input').addEventListener('keyup', function(event){if(event.key === 'Enter') {searchPost();} } );
   </script>
 
-
+<div class="fixed-bottom">
 {% include 'footer.html' %}
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
