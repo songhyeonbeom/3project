@@ -8,7 +8,6 @@
 {% block content %}
 <br><br><br><br><br>
 
-<div class="container my-3 col-5" style="text-align:center; width:250px; margin:auto;">
 <h1>{% trans "Sign In" %}</h1>
 {% get_providers as socialaccount_providers %}
 
@@ -31,17 +30,17 @@
 </form>
 
 
+
 {% if socialaccount_providers %}
+  <!-- (또는) 이라는 거를 이렇게 표시할 수도 있구나 난 그냥 a 태그나 p태그 써서 그냥 썼는데 이렇게 쓰는 방법이 있네요 -->
+<!-- </div> -->
+  <div class="login-or">{% trans 'or' %}</div>
 
 <!-- <div class="socialaccount_ballot"> -->
   <!-- 소셜 로그인 기능 on / off -->
-  <div class="login-or">{% trans 'or' %}</div>
-
   <div class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %} 로그인
   </div>
-  <!-- (또는) 이라는 거를 이렇게 표시할 수도 있구나 난 그냥 a 태그나 p태그 써서 그냥 썼는데 이렇게 쓰는 방법이 있네요 -->
-<!-- </div> -->
 
 {% include "socialaccount/snippets/login_extra.html" %}
 
@@ -53,5 +52,5 @@
 
 
 
-</div>
+
 {% endblock %}
