@@ -20,7 +20,6 @@ from django.conf.urls.static import static
 from blog import views
 
 
-
 urlpatterns = [
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
@@ -28,7 +27,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('single_pages.urls')),
     path('allphoto/', views.allphoto, name='allphoto'),
-
+    path('about_me/', views.about_me, name='about_me'),
 ]
 
 

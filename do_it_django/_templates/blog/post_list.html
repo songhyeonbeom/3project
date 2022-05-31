@@ -1,51 +1,26 @@
 {% extends 'base.html' %}
-
+<!-- 정리 완 포스트 리스트 아이콘/카메라 -->
 {% block main_area %}
-
-
 
 <h1>
     {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
     {% if category %}<span class="badge badge-secondary">{{ category }}</span>{% endif %}
-    {% if tag %}<span class="badge badge-light"><i class="fa-solid fa-tags"></i> {{ tag }} ({{ tag.post_set.count
-        }})</span>{% endif %}
+    {% if tag %}<span class="badge badge-light"><i class="fa-solid fa-tags"></i> {{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
 </h1>
-
 
 {% if post_list.exists %}
 
 {% for p in post_list %}
 <!-- Blog Post -->
 <div class="card col-4 mb-4" id="post-{{ p.pk }}">   <!-- 임시로 col-4 를 주어 작게 만들었다 너무 커져서 보기 불편하였다. 연구해야겠다.-->
-
     <div class="text-muted fst-italic mb-2"><a href="#">{{ p.author | upper }}</a></div>
-    
-
     <!-- 게시물에 사용자 프로필사진과 아이디가 보였으면 좋겠다. 추가하는 중이다. -->
-
     {% if p.image %}
     <img class="card-img-top" src="{{ p.image.url }}" alt="{{ p }} head im-age">
-
     {% else %}
     <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/800/200" alt="random_image">
-
-
     {% endif %}
-
     <div class="card-body">
-
-        <!-- {% if p.category %}
-        <span class="badge badge-secondary float-right">{{ p.category }}</span>
-        {% else%}
-        <span class="badge badge-secondary float-right">미분류</span>
-        {% endif %}
-
-        <h2 class="card-title">{{ p.title }}</h2>
-
-        {% if p.hook_text %}
-        <h5 class="text-muted">{{ p.hook_text }}</h5>
-        {% endif %} -->
-
         <p class="card-text">{{ p.get_content_markdown | truncatewords_html:45 | safe }}</p>
 
         {% if p.tags.exists %}
