@@ -256,26 +256,7 @@ def allphoto(request, c_slug=None):
     return render(request, 'blog/album.html', {'category':c_page, 'posts':posts})
 
 
-def about_me(request, c_slug=None):
-    c_page = None
-    posts_list = None
-    if c_slug==None:
-        print('111111111111111111111')
-        allphoto = request.user.id
-        posts_list = Post.objects.filter(owner_id=allphoto) & Post.objects.order_by('-created_at')
-    paginator = Paginator(posts_list, 6)
-    try:
-        print('3333333333333333333333333333')
-        page = int(request.GET.get('page', 1))
-    except:
-        print('4444444444444444444444444')
-        page = 1
-    try:
-        print('555555555555555555555555555555555555')
-        posts = paginator.page(page)
-    except(EmptyPage, InvalidPage):
-        print('66666666666666666666666666')
-        posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'single_pages/about_me.html', {'category':c_page, 'posts': posts})
+
+
 

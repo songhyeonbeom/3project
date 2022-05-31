@@ -24,6 +24,7 @@ class Tag(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     
     def __str__(self):
         return self.name
