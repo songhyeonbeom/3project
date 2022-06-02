@@ -7,7 +7,6 @@
     <title>{% block head_title %}Blog{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'blog/bootstrap/blog-post.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
-    <link rel="stylesheet" href="{% static 'single_pages/css/landing.css' %}" media="screen">
 
     <script src="https://kit.fontawesome.com/da37861531.js" crossorigin="anonymous"></script>
 </head>
@@ -25,10 +24,10 @@
         </div>
     </div>
 
-
-
-{% include 'footer.html' %}
-
+    <br><br><br><br>
+<div class="fixed-bottom">
+    {% include 'footer.html' %}
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

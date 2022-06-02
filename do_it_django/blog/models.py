@@ -40,7 +40,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=30, blank=True)
     hook_text = models.CharField(max_length=100, blank=True)
-    content = MarkdownxField(blank=True)
+    content = models.TextField(blank=True)
     
     image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
     image_thumbnail = ImageSpecField(source= 'image', processors= [ResizeToFill(380, 380)])
@@ -81,6 +81,10 @@ class Post(models.Model):
             return self.author.socialaccount_set.first().get_avatar_url()
         else:
             return f'https://doitdjango.com/avatar/id/1013/0b6b5c1fe5cb5275/svg/{self.author.email}'
+    
+    def get_modal_url(self):
+        return 'allphoto/{}/'.format(self.pk)
+    
     
     
 class Comment(models.Model):
