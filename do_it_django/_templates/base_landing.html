@@ -5,30 +5,34 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block head_title %}Blog{% endblock %}</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">   
     <link rel="stylesheet" href="{% static 'blog/bootstrap/blog-post.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'single_pages/css/landing.css' %}" media="screen">
 
     <script src="https://kit.fontawesome.com/da37861531.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
- {% include 'navbar.html' %}
-
- <div class="container my-3">
+ 
+    <div class="container my-3">
         <div class="row">
-            <div class="col-12" id="main-area">
+            {% include 'navbar.html' %}
+            <div class="col-md-12 col-lg-12" id="main-area" style="margin: 0px; padding: 0px;">
+                    
                 {% block main_area %}
                 {% endblock %}
-            </div>
+
+           </div>
         </div>
     </div>
 
-
-
-{% include 'footer.html' %}
-
+    <br/>
+    <footer class="py-3 bg-dark fixed-bottom">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+        </div>
+    </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
