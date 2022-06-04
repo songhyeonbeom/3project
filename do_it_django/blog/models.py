@@ -83,9 +83,9 @@ class Post(models.Model):
             return f'https://doitdjango.com/avatar/id/1013/0b6b5c1fe5cb5275/svg/{self.author.email}'
     
     def get_modal_url(self):
-        return 'allphoto/{}/'.format(self.pk)
+        return '/allphoto/{}/'.format(self.pk)
     
-    
+         
     
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

@@ -22,6 +22,10 @@ from blog import views
 
 urlpatterns = [
     path('allphoto/', views.allphoto, name='allphoto'),
+    path('allphoto/<int:pk>/', views.PostDetailModal.as_view()),
+
+    
+    
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
     path('markdownx/', include('markdownx.urls')),
