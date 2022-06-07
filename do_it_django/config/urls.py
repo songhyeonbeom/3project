@@ -18,18 +18,21 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from blog import views
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
     path('allphoto/', views.allphoto, name='allphoto'),
-    path('allphoto/<int:pk>/', views.PostDetailModal.as_view()),
-
     
     
     path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
     path('markdownx/', include('markdownx.urls')),
     path('accounts/', include('allauth.urls')),
+
+    # path('login/', auth_views.LoginView.as_view(template_name='common/login.html'), name='login'),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    
     path('', include('single_pages.urls')),
 ]
 

@@ -1,9 +1,9 @@
-{% extends "base_full_width.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block main_area %}
 
-    <section>
+    <!-- <section>
         <div class="container mt-4">
             <div class="row mx-auto">
                 <div class="col-8 col-sm-8 col-md-8 col-lg-8">
@@ -24,35 +24,34 @@
         </div>
     </section>
 
-<br><br><br><br><br>
+<br><br><br><br><br> -->
+
+
 
     <!-- <div class="container" style="center margin: 0px; padding: 0px;"> -->
 
-    <div class="row mx-auto">
-aaaaaaaaaaaaa
-        {% for post in posts.object_list %}
+        <div class="row mx-auto">
 
-        bbbbbbbbbbbbbbbb
-        <div class="my_bottom_margin col-4 col-sm-4 col-md-4 col-lg-4" style="margin: 0px; padding: 0px">
-            <div class="thumbnail" style="width: 100%; margin-bottom: 0%;">
-                <a href="{{ post.get_absolute_url }}">
-                    <img class="img-fluid rounded" src="{{ post.image.thumbnail_url }}" style="width: 100%;">
-                </a>
+            {% for post in posts.object_list %}
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4" style="margin: 0% 0%; padding: 0% 0%;">
+
+                <div class="thumbnail" style="width: 100%; margin-bottom: 0%;">
+                    <a href="{{ post.get_absolute_url }}">
+                        <img class="img-fluid rounded" src="{{ post.image_thumbnail.url }}" alt="{{ post.title }} image">
+
+                    </a>
+                </div>
             </div>
+            {% endfor %}
+    
         </div>
-        cccccccccccccccccccccccc
-        {% endfor %}
-dddddddddddddddddddd
-    </div>
-
-    <br><br>
 
     <div class="mx-auto">
-        {% if photos.paginator.num_pages > 1 %}
+        {% if posts.paginator.num_pages > 1 %}
         <br>
         <div class="text-center">
-            {% for pg in photos.paginator.page_range %}
-            <a href="?page={{pg}}" class="btn btn-light btn sm {% if photos.number == pg %}active{% endif %}">{{pg}}</a>
+            {% for pg in posts.paginator.page_range %}
+            <a href="?page={{pg}}" class="btn btn-light btn sm {% if posts.number == pg %}active{% endif %}">{{pg}}</a>
             {% endfor %}
         </div>
         {% endif %}

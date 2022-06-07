@@ -258,6 +258,8 @@ def allphoto(request, c_slug=None):
 
 
 
+
+
 class PostDetailModal(DetailView):
     model = Post
 

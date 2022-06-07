@@ -4,6 +4,7 @@
     <head>
         
         <title>{% block head_title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">   
         <link rel="stylesheet" href="{% static 'blog/bootstrap/blog-post.css' %}" media="screen">
@@ -25,8 +26,9 @@
 
     
     {% block body %}
-
-    {% if messages %}
+      <!-- 메시지가 불편하게 뜬다.
+      적절하게 잘 뜨게하고싶은데 손꾸락이 이상헌가 흠.. -->
+    <!-- {% if messages %}
     <div>
       <strong>Messages:</strong>
       <ul>
@@ -35,7 +37,7 @@
         {% endfor %}
       </ul>
     </div>
-    {% endif %}
+    {% endif %} -->
 
 
     <!-- 로긴 위에 베이스에서 계속 뜨는게 거슬려서 지웠습니다. -->

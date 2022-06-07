@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- 정리 완 블로그/앨범 아이콘 홈 -->
+
+
+
+{% block main_area %}
+
+    <!-- 홈 아이콘 / 정사각형 네모사진1 -->
+    <div class="row mx-auto">
+
+        {% for post in posts.object_list %}
+        
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4" style="margin: 0% 0%; padding: 0% 0%;">
+            <a href="{{ post.get_modal_url }}" data-toggle="modal" data-target="#detailModal">
+                <img class="img-fluid rounded" src="{{ post.image_thumbnail.url }}" alt="{{ post.title }} image">
+            </a>
+        </div>
+
+        <div class="modal fade" href="{{ post.get_modal_url }}" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" role="dialog">
+            <div class="modal-dialog col-10">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailModalLabel">
+                            <div class="text-muted fst-italic mb-2"><a href="#">{{ post.author | upper }}</a></div>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body" style="margin:0%; padding:0%;">
+                        
+                        <img class="card-img-top" src="{{ post.image.url }}" alt="{{ p }} head im-age">
+                        render 
+                    </div>
+                    <div class="modal-footer">
+                        <a>내용 들어갈 부분</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        {% endfor %}
+
+
+    </div>
+
+
+    <!-- 페이지 1,2,3 -->
+    <div class="mx-auto">
+        {% if posts.paginator.num_pages > 1 %}
+        <br>
+        <div class="text-center">
+            {% for pg in posts.paginator.page_range %}
+            <a href="?page={{pg}}" class="btn btn-light btn sm {% if posts.number == pg %}active{% endif %}">{{pg}}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <br>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
